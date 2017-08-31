@@ -8,18 +8,19 @@ RSpec.describe ForumPost, type: :model do
   subject { forum_post }
 
   describe 'validate forum post' do
-    context 'with no message' do
+    context 'with no message and no forum thread' do
       it('is not valid') { is_expected.to_not be_valid }
     end
 
-    context 'with a message' do
+    context 'with a message and no forum thread' do
       let(:message) { 'Test forum post' }
       it('is not valid') { is_expected.to_not be_valid }
+    end
 
-      context 'and a forum thread id' do
-        let(:forum_thread) { ForumThread.new(title: 'Thread example title') }
-        it('is valid') { is_expected.to be_valid }
-      end
+    context 'with a message and a forum thread' do
+      let(:message) { 'Test forum post' }
+      let(:forum_thread) { ForumThread.new(title: 'Thread example title') }
+      it('is valid') { is_expected.to be_valid }
     end
   end
 end
