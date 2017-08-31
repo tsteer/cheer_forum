@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831131815) do
+ActiveRecord::Schema.define(version: 20170831152945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "forum_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "forum_posts", force: :cascade do |t|
     t.string "message"
@@ -26,7 +32,10 @@ ActiveRecord::Schema.define(version: 20170831131815) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "forum_category_id"
+    t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id"
   end
 
   add_foreign_key "forum_posts", "forum_threads"
+  add_foreign_key "forum_threads", "forum_categories"
 end

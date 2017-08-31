@@ -1,3 +1,4 @@
 class ForumThread < ApplicationRecord
-  validates_presence_of :title
+  belongs_to :forum_category
+  validates_presence_of :title, :forum_category
 end
