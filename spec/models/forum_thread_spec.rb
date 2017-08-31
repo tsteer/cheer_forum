@@ -11,7 +11,7 @@ RSpec.describe ForumThread, type: :model do
     end
 
     context 'with a title' do
-      let(:title) { 'Thead example title' }
+      let(:title) { 'Thread example title' }
       it('is valid') { is_expected.to be_valid }
     end
   end
