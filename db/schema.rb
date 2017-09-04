@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831152945) do
+ActiveRecord::Schema.define(version: 20170901092327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,13 @@ ActiveRecord::Schema.define(version: 20170831152945) do
   end
 
   create_table "forum_posts", force: :cascade do |t|
-    t.string "message"
-    t.integer "forum_thread_id"
+    t.string "message", null: false
+    t.bigint "forum_thread_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["forum_thread_id"], name: "index_forum_posts_on_forum_thread_id"
+    t.index ["user_id"], name: "index_forum_posts_on_user_id"
   end
 
   create_table "forum_threads", force: :cascade do |t|
@@ -33,9 +36,21 @@ ActiveRecord::Schema.define(version: 20170831152945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "forum_category_id"
+    t.bigint "user_id"
     t.index ["forum_category_id"], name: "index_forum_threads_on_forum_category_id"
+    t.index ["user_id"], name: "index_forum_threads_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.date "date_of_birth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "forum_posts", "forum_threads"
+  add_foreign_key "forum_posts", "users"
   add_foreign_key "forum_threads", "forum_categories"
+  add_foreign_key "forum_threads", "users"
 end
