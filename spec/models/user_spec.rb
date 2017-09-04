@@ -25,10 +25,26 @@ RSpec.describe User, type: :model do
     end
 
     context 'with a username, email and date of birth' do
-      let(:date_of_birth) { '31-09-17' }
+      let(:date_of_birth) { Date.parse('1990-08-31') }
       let(:username) { 'testusername' }
       let(:email) { 'test@test.com' }
       it('is valid') { is_expected.to be_valid }
+    end
+
+    describe 'age validation' do
+      context 'with an invalid age' do
+        let(:date_of_birth) { Date.parse('2015-09-01') }
+        let(:username) { 'testusername' }
+        let(:email) { 'test@test.com' }
+        it('is not valid') { is_expected.to_not be_valid }
+      end
+
+      context 'with a valid age' do
+        let(:date_of_birth) { Date.parse('1989-09-01') }
+        let(:username) { 'testusername' }
+        let(:email) { 'test@test.com' }
+        it('is valid') { is_expected.to be_valid }
+      end
     end
   end
 end
