@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe ForumCategoriesController, type: :controller do
   describe '#create' do
     context 'with invalid data' do
-
       it 'returns an error' do
         post :create, params: { forum_category: { title: ''} }
 
@@ -13,7 +12,6 @@ RSpec.describe ForumCategoriesController, type: :controller do
     end
 
     context 'with valid data' do
-
       it 'returns the category' do
         post :create, params: { forum_category: { title: 'Test Category' } }
 
@@ -24,7 +22,6 @@ RSpec.describe ForumCategoriesController, type: :controller do
 
   describe '#index' do
     context 'with no categories' do
-
       it 'returns no categories' do
         get :index
         expect(JSON.parse(response.body)).to eq([])
@@ -45,7 +42,6 @@ RSpec.describe ForumCategoriesController, type: :controller do
 
   describe '#show' do
     context 'with no categories' do
-
       it 'returns an error message' do
         get :show, params: { id: 7 }
 

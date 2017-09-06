@@ -1,6 +1,7 @@
 class ForumCategoriesController < ApplicationController
   def create
     forum_category = ForumCategory.create(forum_category_params)
+    
     if forum_category.valid?
       render json: forum_category
     else
@@ -14,6 +15,7 @@ class ForumCategoriesController < ApplicationController
 
   def show
     forum_category = ForumCategory.find_by(id: params[:id])
+    
     if forum_category.nil?
       render json: 'Category does not exist', status: 404
     else
