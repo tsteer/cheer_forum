@@ -61,4 +61,34 @@ RSpec.describe ForumCategoriesController, type: :controller do
       end
     end
   end
+
+  describe '#update' do
+    let(:category_1) { ForumCategory.create(title: 'Test category title') }
+    context 'with no data' do
+
+      it 'returns an error messge' do
+        post :update, params: { id: category_1.id, forum_category: {} }
+
+        expect(response.body).to include('No forum category details provided')
+        expect(response.status).to eq(422)
+      end
+    end
+
+    context 'with invalid data' do
+      it 'returns an error message' do
+        post :update, params: { id: category_1.id, forum_category: { title: '' } }
+
+        expect(response.body).to include('Please fill in a category title')
+        expect(response.status).to eq(422)
+      end
+    end
+
+    context 'with valid data' do
+      it 'returns the updated category' do
+        post :update, params: { id: category_1.id, forum_category: { title: 'New category title' } }
+
+        expect(JSON.parse(response.body)['title']).to eq('New category title')
+      end
+    end
+  end
 end

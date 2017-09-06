@@ -23,6 +23,17 @@ class ForumCategoriesController < ApplicationController
     end
   end
 
+  def update
+    render json: 'No forum category details provided', status: 422 and return if params[:forum_category].nil?
+  
+    forum_category = ForumCategory.create(forum_category_params)
+    if forum_category.valid?
+      render json: forum_category
+    else
+      render json: 'Please fill in a category title', status: 422
+    end
+  end
+
   private
 
   def forum_category_params
