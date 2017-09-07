@@ -12,14 +12,14 @@ class ForumThreadsController < ApplicationController
   end
 
   def index
-    render json: ForumThread.all.to_json
+    render json: ForumThread.all
   end
 
   def show
     if @forum_thread
       render json: @forum_thread
     else
-      render json: 'Thread does not exist', status: 404
+      render thread_does_not_exist
     end
   end
 
@@ -37,7 +37,7 @@ class ForumThreadsController < ApplicationController
     if @forum_thread
       ForumThread.destroy(params[:id])
     else
-      render json: 'Thread does not exist', status: 404
+      render thread_does_not_exist
     end
   end
 
@@ -50,4 +50,8 @@ class ForumThreadsController < ApplicationController
   def forum_thread_params
     params.require(:forum_thread).permit(:title, :forum_category_id, :user_id)
   end 
+
+  def thread_does_not_exist
+    { json: 'Thread does not exist', status: 404 }
+  end
 end

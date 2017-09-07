@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ForumThreadsController, type: :controller do
+  subject { JSON.parse(response.body) }
   describe '#create' do
     context 'with invalid data' do
 
@@ -19,7 +20,7 @@ RSpec.describe ForumThreadsController, type: :controller do
       it 'returns the category' do
         post :create, params: { forum_thread: { title: 'Testthread', forum_category_id: forum_category.id, user_id: user.id } }
 
-        expect(JSON.parse(response.body)['title']).to eq('Testthread')
+        expect(subject['title']).to eq('Testthread')
       end
     end
   end
@@ -29,7 +30,7 @@ RSpec.describe ForumThreadsController, type: :controller do
       it 'returns no threads' do
         get :index
 
-        expect(JSON.parse(response.body)).to eq([])
+        expect(subject).to eq([])
       end
     end
 
@@ -70,7 +71,7 @@ RSpec.describe ForumThreadsController, type: :controller do
       it 'returns 1 thread' do
         get :show, params: { id: forum_thread_2.id }
 
-        expect(JSON.parse(response.body)['title']).to eq('Testthread2')
+        expect(subject['title']).to eq('Testthread2')
       end
     end
   end
@@ -102,7 +103,7 @@ RSpec.describe ForumThreadsController, type: :controller do
       it 'returns the forum thread' do
         post :update, params: { id: forum_thread_1.id, forum_thread: { title: 'Newthreadtitle' } }
 
-        expect(JSON.parse(response.body)['title']).to eq('Newthreadtitle')
+        expect(subject['title']).to eq('Newthreadtitle')
       end
     end
   end
@@ -126,7 +127,7 @@ RSpec.describe ForumThreadsController, type: :controller do
         forum_thread_1
         forum_thread_2
       end
-      
+
       it 'destroys 1 thread' do
         delete :destroy, params: { id: forum_thread_2.id }
 
