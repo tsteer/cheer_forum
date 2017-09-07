@@ -1,5 +1,7 @@
 class ForumCategoriesController < ApplicationController
+  
   before_action :find_category, only: [:destroy, :update, :show]
+
   def create
     forum_category = ForumCategory.create(forum_category_params)
     
