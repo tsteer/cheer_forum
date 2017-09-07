@@ -9,6 +9,19 @@ class ForumPostsController < ApplicationController
     end
   end
 
+  def index
+    render json: ForumPost.all
+  end
+
+  def show
+    forum_post = ForumPost.find_by(id: params[:id])
+    if forum_post
+      render json: forum_post
+    else
+      render json: 'Post does not exist', status: 404
+    end
+  end
+
   private
 
   def forum_post_params
