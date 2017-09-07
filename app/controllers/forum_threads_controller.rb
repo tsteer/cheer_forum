@@ -23,6 +23,18 @@ class ForumThreadsController < ApplicationController
     end
   end
 
+  def update
+    render json: 'No forum thread details provided', status: 422 and return unless params[:forum_thread]
+    
+    forum_thread = ForumThread.find_by(id: params[:id])
+    
+    if forum_thread.update(forum_thread_params)
+      render json: forum_thread
+    else
+      render json: 'Did not submit the required fields'
+    end
+  end
+
   private
 
   def forum_thread_params

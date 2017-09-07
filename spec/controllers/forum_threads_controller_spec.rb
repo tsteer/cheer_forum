@@ -74,4 +74,35 @@ RSpec.describe ForumThreadsController, type: :controller do
       end
     end
   end
+
+  describe '#update' do
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
+    let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
+    let(:forum_thread_1) { ForumThread.create(title: 'Testthread1', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+    context 'with no data' do
+
+      it 'returns an error' do
+        post :update, params: { id: forum_thread_1.id, forum_thread: {} }
+
+        expect(response.body).to include('No forum thread details provided')
+        expect(response.status).to eq(422)
+      end
+    end
+
+    context 'with invalid data' do
+      it 'returns an error' do
+        post :update, params: { id: forum_thread_1.id, forum_thread: { title: '' } }
+
+        expect(response.body).to include('Did not submit the required fields')
+      end
+    end
+
+    context 'with valid data' do
+      it 'returns the forum thread' do
+        post :update, params: { id: forum_thread_1.id, forum_thread: { title: 'Newthreadtitle' } }
+
+        expect(JSON.parse(response.body)['title']).to eq('Newthreadtitle')
+      end
+    end
+  end
 end
