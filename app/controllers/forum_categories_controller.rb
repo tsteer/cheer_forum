@@ -23,10 +23,9 @@ class ForumCategoriesController < ApplicationController
   end
 
   def update
-    render json: 'No forum category details provided', status: 422 and return if params[:forum_category].nil?
-  
-    @forum_category.update(forum_category_params)
-    if @forum_category.valid?
+    render json: 'No forum category details provided', status: 422 and return unless params[:forum_category]
+
+    if @forum_category.update(forum_category_params)
       render json: @forum_category
     else
       render json: 'Please fill in a category title', status: 422
@@ -34,10 +33,10 @@ class ForumCategoriesController < ApplicationController
   end
 
   def destroy
-    if @forum_category.nil?
-      render json: 'Category does not exist', status: 404
-    else
+    if @forum_category
       ForumCategory.destroy(params[:id])
+    else
+      render json: 'Category does not exist', status: 404
     end
   end
 

@@ -103,9 +103,13 @@ RSpec.describe ForumCategoriesController, type: :controller do
     end
 
     context 'with 2 categories' do
-      let!(:forum_category_1) { ForumCategory.create(title: 'Test Category 1') }
-      let!(:forum_category_2) { ForumCategory.create(title: 'Test Category 2') }
-
+      let(:forum_category_1) { ForumCategory.create(title: 'Test Category 1') }
+      let(:forum_category_2) { ForumCategory.create(title: 'Test Category 2') }
+      before do
+        forum_category_1
+        forum_category_2
+      end
+      
       it 'destroys 1 category' do
         delete :destroy, params: { id: forum_category_2.id }
 
