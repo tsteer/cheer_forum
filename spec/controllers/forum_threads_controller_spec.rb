@@ -94,6 +94,7 @@ RSpec.describe ForumThreadsController, type: :controller do
         post :update, params: { id: forum_thread_1.id, forum_thread: { title: '' } }
 
         expect(response.body).to include('Did not submit the required fields')
+        expect(response.status).to eq(422)
       end
     end
 
@@ -102,6 +103,34 @@ RSpec.describe ForumThreadsController, type: :controller do
         post :update, params: { id: forum_thread_1.id, forum_thread: { title: 'Newthreadtitle' } }
 
         expect(JSON.parse(response.body)['title']).to eq('Newthreadtitle')
+      end
+    end
+  end
+
+  describe '#destroy' do
+    context 'with no threads' do
+      it 'returns an error' do
+        delete :destroy, params: { id: 8 }
+
+        expect(response.body).to include('Thread does not exist')
+        expect(response.status).to eq(404)
+      end
+    end
+
+    context 'with 2 threads' do
+      let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
+      let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
+      let(:forum_thread_1) { ForumThread.create(title: 'Testthread1', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      let(:forum_thread_2) { ForumThread.create(title: 'Testthread2', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      before do
+        forum_thread_1
+        forum_thread_2
+      end
+      
+      it 'destroys 1 thread' do
+        delete :destroy, params: { id: forum_thread_2.id }
+
+        expect(ForumThread.count).to eq(1)
       end
     end
   end
