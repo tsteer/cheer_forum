@@ -15,10 +15,10 @@ class ForumCategoriesController < ApplicationController
   end
 
   def show
-    if @forum_category.nil?
-      render json: 'Category does not exist', status: 404
-    else
+    if @forum_category
       render json: @forum_category
+    else
+      render json: 'Category does not exist', status: 404
     end
   end
 
