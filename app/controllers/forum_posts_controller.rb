@@ -22,6 +22,17 @@ class ForumPostsController < ApplicationController
     end
   end
 
+  def update
+    render json: 'No forum post details provided', status: 422 and return unless params[:forum_post]
+
+    forum_post = ForumPost.find_by(id: params[:id])
+    if forum_post.update(forum_post_params)
+      render json: forum_post
+    else
+      render json: 'Did not submit the required fields', status: 422
+    end
+  end
+
   private
 
   def forum_post_params

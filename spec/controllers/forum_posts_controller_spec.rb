@@ -71,4 +71,36 @@ RSpec.describe ForumPostsController, type: :controller do
       end
     end
   end
+
+  describe '#update' do
+    let(:forum_post_1) { ForumPost.create(message: message_1, forum_thread_id: forum_thread_1.id, user_id: user_1.id) }
+    context 'with no data' do
+
+      it 'returns an error' do
+        post :update, params: { id: forum_post_1.id, forum_post: {} }
+
+        expect(response.body).to include('No forum post details provided')
+        expect(response.status).to eq(422)
+      end
+    end
+
+    context 'with invalid data' do
+      it 'returns an error' do
+        post :update, params: { id: forum_post_1.id, forum_post: { message: '' } }
+
+        expect(response.body).to include('Did not submit the required fields')
+        expect(response.status).to eq(422)
+      end
+    end
+
+    context ' with valid data' do
+      it 'returns the forum post' do
+        post :update, params: { id: forum_post_1.id, forum_post: { message: 'New forum post message' } }
+
+        expect(JSON.parse(response.body)['message']).to eq('New forum post message')
+      end
+    end
+  end
+
+  
 end
