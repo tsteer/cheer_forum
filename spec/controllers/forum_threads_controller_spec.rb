@@ -74,6 +74,37 @@ RSpec.describe ForumThreadsController, type: :controller do
         expect(subject['title']).to eq('Testthread2')
       end
     end
+
+    context 'with no posts' do
+      let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
+      let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
+      let(:forum_thread_1) { ForumThread.create(title: 'Testthread1', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      
+      it 'returns no posts' do
+        get :show, params: { id: forum_thread_1 }
+
+        expect(JSON.parse(response.body)['forum_posts']).to eq([])
+      end
+    end
+
+    context 'with 2 posts' do
+      let(:message_1) { 'Test post message 1' }
+      let(:message_2) { 'Test post message 2' }
+      let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
+      let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
+      let(:forum_thread_1) { ForumThread.create(title: 'Testthread1', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      let(:forum_post_1) { ForumPost.create(message: message_1, forum_thread_id: forum_thread_1.id, user_id: user_1.id) }
+      let(:forum_post_2) { ForumPost.create(message: message_2, forum_thread_id: forum_thread_1.id, user_id: user_1.id) }
+      before do
+        forum_post_1
+        forum_post_2
+      end
+      
+      it 'returns 2 posts' do
+        get :show, params: { id: forum_thread_1.id }
+        expect(JSON.parse(response.body)['forum_posts'].first['message']).to eq('Test post message 1')
+      end
+    end
   end
 
   describe '#update' do

@@ -18,7 +18,7 @@ class ForumCategoriesController < ApplicationController
 
   def show
     if @forum_category
-      render json: @forum_category
+      render json: @forum_category, include: :forum_threads
     else
       render json: 'Category does not exist', status: 404
     end

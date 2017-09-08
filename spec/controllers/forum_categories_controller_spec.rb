@@ -60,6 +60,33 @@ RSpec.describe ForumCategoriesController, type: :controller do
         expect(JSON.parse(response.body)['title']).to eq('Test Category 2')
       end
     end
+
+    context 'with no threads' do
+      let(:forum_category_1) { ForumCategory.create(title: 'Test Category 1') }
+
+      it 'returns no threads' do
+        get :show, params: { id: forum_category_1.id }
+
+        expect(JSON.parse(response.body)['forum_threads']).to eq([])
+      end
+    end
+
+    context 'with 2 threads' do
+      let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
+      let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
+      let(:forum_thread_1) { ForumThread.create(title: 'Testthread1', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      let(:forum_thread_2) { ForumThread.create(title: 'Testthread2', forum_category_id: forum_category_1.id, user_id: user_1.id) }
+      before do
+        forum_thread_1
+        forum_thread_2
+      end
+
+      it 'returns 2 threads' do
+        get :show, params: { id: forum_category_1.id }
+
+        expect(JSON.parse(response.body)['forum_threads'].first['title']).to eq('Testthread1')
+      end
+    end
   end
 
   describe '#update' do

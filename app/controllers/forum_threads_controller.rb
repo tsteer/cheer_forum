@@ -17,7 +17,7 @@ class ForumThreadsController < ApplicationController
 
   def show
     if @forum_thread
-      render json: @forum_thread
+      render json: @forum_thread, include: :forum_posts
     else
       render thread_does_not_exist
     end
