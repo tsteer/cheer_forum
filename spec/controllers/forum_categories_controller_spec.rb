@@ -64,10 +64,10 @@ RSpec.describe ForumCategoriesController, type: :controller do
     context 'with no threads' do
       let(:forum_category_1) { ForumCategory.create(title: 'Test Category 1') }
 
-      it 'returns an empty array' do
+      it 'returns no threads' do
         get :show, params: { id: forum_category_1.id }
 
-        expect(JSON.parse(response.body)['forum threads']).to eq(nil)
+        expect(JSON.parse(response.body)['forum_threads']).to eq([])
       end
     end
 
