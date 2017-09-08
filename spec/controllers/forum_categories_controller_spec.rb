@@ -61,6 +61,16 @@ RSpec.describe ForumCategoriesController, type: :controller do
       end
     end
 
+    context 'with no threads' do
+      let(:forum_category_1) { ForumCategory.create(title: 'Test Category 1') }
+
+      it 'returns an empty array' do
+        get :show, params: { id: forum_category_1.id }
+
+        expect(JSON.parse(response.body)['forum threads']).to eq(nil)
+      end
+    end
+
     context 'with 2 threads' do
       let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01') }
       let(:forum_category_1) { ForumCategory.create(title: 'Testcategory') }
