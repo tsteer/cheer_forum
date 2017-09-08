@@ -4,6 +4,7 @@ class ForumPostsController < ApplicationController
 
   def create
     forum_post = ForumPost.create(forum_post_params)
+    
     if forum_post.valid?
       render json: forum_post
     else
