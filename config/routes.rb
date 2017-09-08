@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resources :forum_categories
   resources :forum_threads
+  resources :forum_posts
 end
  

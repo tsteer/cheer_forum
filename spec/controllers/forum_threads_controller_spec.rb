@@ -54,7 +54,7 @@ RSpec.describe ForumThreadsController, type: :controller do
 
   describe '#show' do
     context 'with no threads' do
-      it 'returns no threads' do
+      it 'returns an error' do
         get :show, params: { id: 7 }
 
         expect(response.body).to include('Thread does not exist')
