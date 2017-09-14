@@ -2,12 +2,18 @@ class ForumThreadsController < ApplicationController
 
   before_action :find_thread, only: [:show, :update, :destroy]
 
+  def new
+    @forum_thread = ForumThread.new
+  end
+
   def create
-    forum_thread = ForumThread.create(forum_thread_params)
-    if forum_thread.valid?
-      render json: forum_thread
+    @forum_thread = ForumThread.new(forum_thread_params)
+    @forum_thread.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
+    if @forum_thread.save
+      redirect_to forum_thread_path(@forum_thread), notice: 'Thread created'
     else
-      render json: 'Please complete all required fields', status: 422
+      flash[:notice] = 'Invalid details'
+      render :new
     end
   end
 
@@ -17,7 +23,7 @@ class ForumThreadsController < ApplicationController
 
   def show
     if @forum_thread
-      render json: @forum_thread, include: :forum_posts
+      @forum_thread
     else
       render thread_does_not_exist
     end
