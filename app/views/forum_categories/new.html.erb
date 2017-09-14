@@ -1,0 +1,11 @@
+<%= form_for @forum_category do |f| %>
+
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title %>
+
+  <%= f.submit 'Create category' %>
+<% end %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
