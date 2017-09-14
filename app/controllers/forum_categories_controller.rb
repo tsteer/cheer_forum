@@ -2,13 +2,18 @@ class ForumCategoriesController < ApplicationController
   
   before_action :find_category, only: [:destroy, :update, :show]
 
+  def new
+    @forum_category = ForumCategory.new
+  end
+
   def create
-    forum_category = ForumCategory.create(forum_category_params)
+    @forum_category = ForumCategory.new(forum_category_params)
     
-    if forum_category.valid?
-      render json: forum_category
+    if @forum_category.save
+      redirect_to forum_category_path(@forum_category), notice: 'Category created'
     else
-      render json: 'Please give the category a name', status: 422
+      flash[:notice] = 'Invalid details'
+      render :new
     end
   end
 
@@ -18,7 +23,7 @@ class ForumCategoriesController < ApplicationController
 
   def show
     if @forum_category
-      render json: @forum_category, include: :forum_threads
+      @forum_category
     else
       render json: 'Category does not exist', status: 404
     end
