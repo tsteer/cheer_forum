@@ -1,0 +1,7 @@
+<% if @forum_categories.empty? %>
+  <p>There are no categories</p>
+<% else %>
+  <% @forum_categories.each do |f| %>
+    <%= f.title %>
+  <% end %>
+<% end %>

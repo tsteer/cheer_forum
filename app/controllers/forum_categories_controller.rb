@@ -13,7 +13,7 @@ class ForumCategoriesController < ApplicationController
   end
 
   def index
-    render json: ForumCategory.all.to_json
+    @forum_categories = ForumCategory.all
   end
 
   def show
