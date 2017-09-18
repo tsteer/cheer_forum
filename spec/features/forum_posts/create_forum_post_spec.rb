@@ -15,4 +15,15 @@ RSpec.feature 'creating a forum post' do
       expect(page).to have_content 'Message posted'
     end
   end
+
+  context 'with invalid details' do
+    it 'returns an error' do
+      visit forum_thread_path(forum_thread_1)
+
+      fill_in 'Message', with: ''
+      click_on 'Post'
+
+      expect(page).to have_content 'Invalid details'
+    end
+  end
 end

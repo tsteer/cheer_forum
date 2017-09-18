@@ -9,7 +9,7 @@ class ForumPostsController < ApplicationController
     if forum_post.valid?
       redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Message posted'
     else
-      render json: 'Please complete all required fields', status: 422
+      redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Invalid details'
     end
   end
 
