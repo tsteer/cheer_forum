@@ -1,0 +1,7 @@
+<%= form_for @forum_post do |f| %>
+  <%= f.hidden_field :forum_thread_id, value: @forum_thread.id %>
+  <%= f.label :message, 'Message' %>
+  <%= f.text_field :message %>
+
+  <%= f.submit 'Post' %>
+<% end %>
