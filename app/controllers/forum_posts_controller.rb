@@ -3,12 +3,13 @@ class ForumPostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy]
 
   def create
-    forum_post = ForumPost.create(forum_post_params)
-    
+    forum_post = ForumPost.new(forum_post_params)
+    forum_post.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
+
     if forum_post.valid?
-      render json: forum_post
+      redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Message posted'
     else
-      render json: 'Please complete all required fields', status: 422
+      redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Invalid details'
     end
   end
 

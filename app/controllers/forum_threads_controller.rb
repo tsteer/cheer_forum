@@ -23,7 +23,7 @@ class ForumThreadsController < ApplicationController
 
   def show
     if @forum_thread
-      @forum_thread
+      @forum_post = @forum_thread.forum_posts.new
     else
       render thread_does_not_exist
     end
