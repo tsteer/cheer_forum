@@ -17,7 +17,7 @@ RSpec.describe 'forum_categories/show' do
   context 'with 3 threads in 2 different categories' do
     it 'displays the 2 threads in the specified category' do
       assign(:forum_category, forum_category_1)
-
+      
       render
 
       expect(rendered).to match /Forum thread title 1/

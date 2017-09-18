@@ -4,4 +4,8 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<% @forum_thread.forum_posts.each do |post| %>
+  <p><%= post.message %></p>
+<% end %>
+
 <%= render "forum_posts/form" %>
