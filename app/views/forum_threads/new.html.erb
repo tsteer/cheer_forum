@@ -1,14 +1,3 @@
-<%= form_for @forum_thread do |f| %>
-
-  <%= f.label :title, 'Title' %>
-  <%= f.text_field :title %>
-
-  <%= f.label :forum_category_id, 'Forum category' %>
-  <%= f.collection_select :forum_category_id, ForumCategory.all, :id, :title %>
-
-  <%= f.submit 'Create thread' %>
-<% end %>
-
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<div class="new-thread-form">
+  <%= render partial: "form", locals: { button_label: 'Create thread' } %>
+</div>
