@@ -47,6 +47,7 @@ class ForumCategoriesController < ApplicationController
   def destroy
     if @forum_category
       ForumCategory.destroy(params[:id])
+      redirect_to forum_categories_path, notice: 'Category deleted'
     else
       render json: 'Category does not exist', status: 404
     end
