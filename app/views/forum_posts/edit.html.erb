@@ -1,0 +1,7 @@
+<div class="edit-post-form">
+  <%= render partial: "form", locals: { button_label: 'Update post' } %>
+</div>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>

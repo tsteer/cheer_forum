@@ -8,4 +8,4 @@
   <p><%= post.message %></p>
 <% end %>
 
-<%= render "forum_posts/form" %>
+<%= render partial: "forum_posts/form", locals: { button_label: 'Post' } %>
