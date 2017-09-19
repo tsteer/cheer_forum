@@ -44,8 +44,11 @@ class ForumPostsController < ApplicationController
   end
 
   def destroy
+    forum_thread = @forum_post.forum_thread
+
     if @forum_post
       ForumPost.destroy(params[:id])
+      redirect_to forum_thread_path(forum_thread), notice: 'Post deleted'
     else
       render json: 'Post does not exist'
     end
