@@ -23,6 +23,7 @@ class ForumThreadsController < ApplicationController
 
   def show
     if @forum_thread
+      @forum_posts = @forum_thread.forum_posts
       @forum_post = @forum_thread.forum_posts.new
     else
       render thread_does_not_exist
@@ -47,6 +48,7 @@ class ForumThreadsController < ApplicationController
   def destroy
     if @forum_thread
       ForumThread.destroy(params[:id])
+      redirect_to forum_categories_path, notice: 'Thread deleted'
     else
       render thread_does_not_exist
     end
