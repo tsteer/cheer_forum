@@ -6,6 +6,7 @@ RSpec.feature 'updating a thread' do
       visit edit_forum_thread_path(id: 89303)
 
       expect(page).to have_content '404'
+      expect(page).to have_http_status(404)
     end
   end
 

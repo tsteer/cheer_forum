@@ -31,7 +31,7 @@ class ForumThreadsController < ApplicationController
 
   def edit
     unless @forum_thread
-      render plain: '404 not found'
+      render plain: '404 not found', status: 404
     end
   end
 

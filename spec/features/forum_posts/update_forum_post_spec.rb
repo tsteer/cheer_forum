@@ -6,6 +6,7 @@ RSpec.feature 'updating a post' do
       visit edit_forum_post_path(id: 2332)
 
       expect(page).to have_content '404'
+      expect(page).to have_http_status(404)
     end
   end
 

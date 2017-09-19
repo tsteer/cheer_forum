@@ -6,6 +6,7 @@ RSpec.feature 'updating a category' do
       visit edit_forum_category_path(id: 9999)
 
       expect(page).to have_content '404'
+      expect(page).to have_http_status(404)
     end
   end
   

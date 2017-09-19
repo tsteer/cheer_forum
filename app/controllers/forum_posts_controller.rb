@@ -27,7 +27,7 @@ class ForumPostsController < ApplicationController
 
   def edit
     unless @forum_post
-      render plain: '404 not found' and return
+      render plain: '404 not found', status: 404 and return
     end
     @forum_thread = @forum_post.forum_thread
   end
