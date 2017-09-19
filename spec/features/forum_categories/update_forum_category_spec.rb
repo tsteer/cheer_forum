@@ -5,7 +5,7 @@ RSpec.feature 'updating a category' do
     it 'returns an error' do
       visit edit_forum_category_path(id: 9999)
 
-      expect(page).to have_content 'not found'
+      expect(page).to have_content '404'
     end
   end
   

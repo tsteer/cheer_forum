@@ -27,7 +27,7 @@ class ForumPostsController < ApplicationController
 
   def edit
     unless @forum_post
-      redirect_to forum_categories_path, notice: 'Post not found' and return
+      render plain: '404 not found' and return
     end
     @forum_thread = @forum_post.forum_thread
   end

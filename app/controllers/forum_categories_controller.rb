@@ -31,7 +31,7 @@ class ForumCategoriesController < ApplicationController
 
   def edit
     unless @forum_category
-      redirect_to forum_categories_path, notice: 'Category not found'
+      render plain: '404 not found'
     end
   end
 

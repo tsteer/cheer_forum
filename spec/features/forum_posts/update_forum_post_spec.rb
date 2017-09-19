@@ -5,7 +5,7 @@ RSpec.feature 'updating a post' do
     it 'returns an error' do
       visit edit_forum_post_path(id: 2332)
 
-      expect(page).to have_content 'not found'
+      expect(page).to have_content '404'
     end
   end
 

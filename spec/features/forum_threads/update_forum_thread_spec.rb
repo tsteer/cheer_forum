@@ -5,7 +5,7 @@ RSpec.feature 'updating a thread' do
     it 'returns an error' do
       visit edit_forum_thread_path(id: 89303)
 
-      expect(page).to have_content 'not found'
+      expect(page).to have_content '404'
     end
   end
 
