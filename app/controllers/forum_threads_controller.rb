@@ -1,6 +1,6 @@
 class ForumThreadsController < ApplicationController
 
-  before_action :find_thread, only: [:show, :update, :destroy]
+  before_action :find_thread, only: [:show, :update, :destroy, :edit]
 
   def new
     @forum_thread = ForumThread.new
@@ -18,7 +18,7 @@ class ForumThreadsController < ApplicationController
   end
 
   def index
-    render json: ForumThread.all
+    @forum_thread = ForumThread.all
   end
 
   def show
@@ -29,13 +29,18 @@ class ForumThreadsController < ApplicationController
     end
   end
 
+  def edit
+    unless @forum_thread
+      render plain: '404 not found', status: 404
+    end
+  end
+
   def update
-    render json: 'No forum thread details provided', status: 422 and return unless params[:forum_thread]
-    
     if @forum_thread.update(forum_thread_params)
-      render json: @forum_thread
+      redirect_to forum_thread_path(@forum_thread), notice: 'Thread updated'
     else
-      render json: 'Did not submit the required fields', status: 422
+      flash[:notice] = 'Invalid details'
+      render :edit
     end
   end
 

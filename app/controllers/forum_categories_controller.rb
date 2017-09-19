@@ -1,6 +1,6 @@
 class ForumCategoriesController < ApplicationController
   
-  before_action :find_category, only: [:destroy, :update, :show]
+  before_action :find_category, only: [:destroy, :update, :show, :edit]
 
   def new
     @forum_category = ForumCategory.new
@@ -29,13 +29,18 @@ class ForumCategoriesController < ApplicationController
     end
   end
 
-  def update
-    render json: 'No forum category details provided', status: 422 and return unless params[:forum_category]
+  def edit
+    unless @forum_category
+      render plain: '404 not found', status: 404
+    end
+  end
 
+  def update
     if @forum_category.update(forum_category_params)
-      render json: @forum_category
+      redirect_to forum_category_path(@forum_category), notice: 'Category updated'
     else
-      render json: 'Please fill in a category title', status: 422
+      flash[:notice] = 'Invalid details'
+      render :edit
     end
   end
 

@@ -1,6 +1,6 @@
 class ForumPostsController < ApplicationController
 
-  before_action :find_post, only: [:show, :update, :destroy]
+  before_action :find_post, only: [:show, :update, :destroy, :edit]
 
   def create
     forum_post = ForumPost.new(forum_post_params)
@@ -25,13 +25,21 @@ class ForumPostsController < ApplicationController
     end
   end
 
+  def edit
+    unless @forum_post
+      render plain: '404 not found', status: 404 and return
+    end
+    @forum_thread = @forum_post.forum_thread
+  end
+
   def update
-    render json: 'No forum post details provided', status: 422 and return unless params[:forum_post]
+      @forum_thread = @forum_post.forum_thread
 
     if @forum_post.update(forum_post_params)
-      render json: @forum_post
+      redirect_to forum_thread_path(@forum_thread), notice: 'Post updated'
     else
-      render json: 'Did not submit the required fields', status: 422
+      flash[:notice] = 'Invalid details'
+      render :edit
     end
   end
 

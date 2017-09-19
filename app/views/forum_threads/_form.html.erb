@@ -1,0 +1,10 @@
+<%= form_for @forum_thread do |f| %>
+
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title %>
+
+  <%= f.label :forum_category_id, 'Forum category' %>
+  <%= f.collection_select :forum_category_id, ForumCategory.all, :id, :title %>
+
+  <%= f.submit button_label %>
+<% end %>
