@@ -26,7 +26,7 @@ RSpec.describe ForumThread, type: :model do
     context 'with a title, a forum category and a user' do
       let(:title) { 'Thread example title' }
       let(:forum_category) { ForumCategory.new(title: 'Example category title') }
-      let(:user) { User.new(username: 'testusername', email: 'test@test.com', date_of_birth: '31-09-17') }
+      let(:user) { User.new(username: 'testusername', email: 'test@test.com', date_of_birth: '31-09-17', password: 'password', password_confirmation: 'password') }
       it('is valid') { is_expected.to be_valid }
     end
   end
