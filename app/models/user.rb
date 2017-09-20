@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates_presence_of :username, :email, :date_of_birth
   validate :check_user_age, unless: Proc.new { |a| a.date_of_birth.blank? }
   validates_uniqueness_of :email, :username
+  validates :password, length: { minimum: 6 }
   has_secure_password
 
   def check_user_age

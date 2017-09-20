@@ -33,6 +33,26 @@ RSpec.describe User, type: :model do
       it('is not valid') { is_expected.to_not be_valid }
     end
 
+    describe 'password' do
+      context 'with a password that is too short' do
+        let(:date_of_birth) { Date.parse('1990-08-31') }
+        let(:username) { 'testusername' }
+        let(:email) { 'test@test.com' }
+        let(:password) { 'passw' }
+        let(:password_confirmation) { 'passw' }
+        it('is not valid') { is_expected.to_not be_valid }
+      end
+
+      context 'with a valid password' do
+        let(:date_of_birth) { Date.parse('1990-08-31') }
+        let(:username) { 'testusername' }
+        let(:email) { 'test@test.com' }
+        let(:password) { 'password' }
+        let(:password_confirmation) { 'password' }
+        it('is valid') { is_expected.to be_valid }
+      end
+    end
+
     describe 'age validation' do
       context 'with an invalid age' do
         let(:date_of_birth) { Date.parse('2015-09-01') }
