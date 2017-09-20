@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    
     if @user.save
       redirect_to user_path(@user), notice: 'User created'
     else
@@ -16,6 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    if @user
+      @user
+    else
+      render plain: '404 not found', status: 404
+    end
   end
 
   def edit
@@ -30,6 +36,15 @@ class UsersController < ApplicationController
     else
       flash[:notice] = 'Invalid details'
       render :edit
+    end
+  end
+
+  def destroy
+    if @user
+      User.destroy(params[:id])
+      redirect_to new_user_path, notice: 'Account deleted'
+    else
+      render plain: '404 not found', status: 404
     end
   end
 

@@ -7,6 +7,7 @@ RSpec.feature 'update user' do
       visit edit_user_path(id: 28723)
 
       expect(page).to have_content '404'
+      expect(page).to have_http_status(404)
     end
   end
 
