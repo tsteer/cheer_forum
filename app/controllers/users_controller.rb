@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -16,6 +16,21 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    unless @user
+      render plain: '404 not found', status: 404
+    end
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'User updated'
+    else
+      flash[:notice] = 'Invalid details'
+      render :edit
+    end
   end
 
   private
