@@ -61,5 +61,20 @@ RSpec.describe User, type: :model do
         it('is not valid') { is_expected.to_not be_valid }
       end
     end
+
+    describe 'username validation' do
+      context 'with an already registered username' do
+        let(:email) { 'test@test.com' }
+        let(:username) { 'testusername' }
+        let(:date_of_birth)  { Date.parse('1989-09-01') }
+        let(:user_1) { User.create(username: username, email: 'test1@test.com', date_of_birth: date_of_birth) }
+
+        before do
+          user_1
+        end
+
+        it('is not valid') { is_expected.to_not be_valid }
+      end
+    end
   end
 end
