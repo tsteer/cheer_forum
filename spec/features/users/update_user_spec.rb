@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'update user' do
-
   context 'with no user' do
     it 'returns an error' do
       visit edit_user_path(id: 28723)
