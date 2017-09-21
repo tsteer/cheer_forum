@@ -4,7 +4,7 @@
 <% @forum_thread.forum_posts.each do |post| %>
   <% next unless post.persisted? %>
   <p><%= post.message %></p>
-  <p><%= link_to 'Delete post', forum_post_path(post), method: :delete, confirm: 'Are you sure you want to delete this post?' %></p>
+  <p><%= link_to 'Delete post', forum_post_path(post), method: :delete, confirm: 'Are you sure you want to delete this post?', class: 'delete-post' %></p>
 <% end %>
 
 <%= render partial: "forum_posts/form", locals: { button_label: 'Post' } %>

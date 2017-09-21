@@ -15,7 +15,7 @@ RSpec.feature 'forum_threads/show' do
 
     it 'deletes 1 post' do
       visit forum_thread_path(forum_thread_1)
-      page.all('a')[2].click
+      page.all(:css, '.delete-post').first.click
 
       expect(page).to have_content 'Post deleted'
       expect(ForumPost.count).to eq(1)

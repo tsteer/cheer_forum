@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
+      log_in(@user)
       redirect_to user_path(@user), notice: 'User created'
     else
       flash[:notice] = 'Invalid details'
