@@ -1,6 +1,6 @@
 <h1><%= @forum_thread.title %></h1>
 
-<p><%= link_to 'Edit thread', edit_forum_thread_path(@forum_thread), method: :edit %></p>
+<p><%= link_to 'Edit thread', edit_forum_thread_path(@forum_thread) %></p>
 
 <p><%= link_to 'Delete thread', forum_thread_path(@forum_thread), method: :delete, confirm: 'Are you sure you want to delete this thread?' %></p>
 
@@ -8,7 +8,7 @@
   <% next unless post.persisted? %>
   <p><%= post.message %></p>
 
-  <p><%= link_to 'Edit post', edit_forum_post_path(post), method: :edit %></p>
+  <p><%= link_to 'Edit post', edit_forum_post_path(post) %></p>
 
   <p><%= link_to 'Delete post', forum_post_path(post), method: :delete, confirm: 'Are you sure you want to delete this post?', class: 'delete-post' %></p>
 <% end %>

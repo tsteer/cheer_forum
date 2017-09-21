@@ -24,7 +24,7 @@ RSpec.feature 'updating a category' do
   end
 
   context 'with valid details' do
-  let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+    let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
 
     it 'updates the category title' do
       visit edit_forum_category_path(forum_category_1)

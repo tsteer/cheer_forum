@@ -11,13 +11,13 @@ RSpec.feature 'delete user' do
   end
 
   context 'with 2 users' do
-  let(:user_1) { User.create(username: 'Testusername1', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
-  let(:user_2) { User.create(username: 'Testusername2', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
+    let(:user_2) { User.create(username: 'Testusername2', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
 
-  before do
-    user_1
-    user_2
-  end
+    before do
+      user_1
+      user_2
+    end
 
     it 'deletes 1 user' do
       visit user_path(user_2)
