@@ -12,12 +12,13 @@ RSpec.describe 'forum_categories/show' do
     forum_thread_1
     forum_thread_2
     forum_thread_3
+    allow(view).to receive(:current_user).and_return(user_1)
   end
 
   context 'with 3 threads in 2 different categories' do
     it 'displays the 2 threads in the specified category' do
       assign(:forum_category, forum_category_1)
-      
+
       render
 
       expect(rendered).to match /Forum thread title 1/

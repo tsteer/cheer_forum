@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'forum_categories/show' do
   context 'with 2 categories' do
-    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_category_2) { ForumCategory.create(title: 'Forum category title 2') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1) }
@@ -19,7 +19,8 @@ RSpec.feature 'forum_categories/show' do
       forum_post_2
     end
     
-    it 'deletes 1 category' do
+    it 'deletes 1 category as an admin' do
+      page.set_rack_session(user_id: user_1.id)
       visit forum_category_path(forum_category_2)
 
       click_on 'Delete category'

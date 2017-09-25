@@ -28,7 +28,7 @@ RSpec.feature 'creating a category' do
 
     context 'with valid details' do
       it 'creates the category' do
-        page.set_rack_session(user_id: user_1)
+        page.set_rack_session(user_id: user_1.id)
         visit new_forum_category_path
 
         fill_in 'Title', with: 'New category title'
