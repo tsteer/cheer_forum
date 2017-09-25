@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'User signup' do
-
   context 'with invalid details' do
     it 'returns an error' do
       visit root_path

@@ -25,6 +25,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    redirect_to forum_categories_path, notice: 'Permission denied' unless current_user.admin?
+    @users = User.all
+  end
+
   def edit
     unless @user
       render plain: '404 not found', status: 404
