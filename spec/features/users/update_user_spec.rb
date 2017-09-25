@@ -13,6 +13,7 @@ RSpec.feature 'update user' do
   context 'with invalid details' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
     it 'returns an error' do
+      page.set_rack_session(user_id: user_1.id)
       visit edit_user_path(user_1)
 
       fill_in 'Username', with: ''
@@ -25,6 +26,7 @@ RSpec.feature 'update user' do
   context 'with valid details' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
     it 'updates the user' do
+      page.set_rack_session(user_id: user_1.id)
       visit edit_user_path(user_1)
 
       fill_in 'Username', with: 'Newusername'
