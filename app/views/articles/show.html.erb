@@ -1,0 +1,6 @@
+<h1><%= @article.title %></h1>
+<h2><%= @article.subheading %></h2>
+<h3><%= @article.author %></h3>
+<p><%= @article.article_text %></p>
+
+<p> <%= link_to 'Delete article', article_path(@article), method: :delete, confirm: 'Are you sure you want to delete this article?' %></p>

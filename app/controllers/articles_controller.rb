@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :find_article, only: [:update, :edit]
+  before_action :find_article, only: [:update, :edit, :show, :destroy]
 
   def new
     @article = Article.new
@@ -21,6 +21,10 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def show
+    @article
+  end
+
   def edit
     unless @article
       render plain: '404 not found', status: 404
@@ -33,6 +37,13 @@ class ArticlesController < ApplicationController
     else
       flash[:notice] = 'Invalid details'
       render :edit
+    end
+  end
+
+  def destroy
+    if @article
+      Article.destroy(params[:id])
+      redirect_to articles_path, notice: 'Article deleted'
     end
   end
 
