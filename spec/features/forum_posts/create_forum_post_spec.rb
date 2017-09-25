@@ -7,6 +7,7 @@ RSpec.feature 'creating a forum post' do
 
   context 'with valid details' do
     it 'creates the forum post' do
+      page.set_rack_session(user_id: user_1.id)
       visit forum_thread_path(forum_thread_1)
 
       fill_in 'Message', with: 'Test post message'
@@ -18,6 +19,7 @@ RSpec.feature 'creating a forum post' do
 
   context 'with invalid details' do
     it 'returns an error' do
+      page.set_rack_session(user_id: user_1.id)
       visit forum_thread_path(forum_thread_1)
 
       fill_in 'Message', with: ''

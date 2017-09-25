@@ -101,4 +101,45 @@ RSpec.feature 'edit and delete links visibility' do
       expect(page).to_not have_content('Delete thread')
     end
   end
+
+  context 'edit post as an admin' do
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+    let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
+
+    before do
+      user_1
+      forum_category_1
+      forum_thread_1
+      forum_post_1
+    end
+    
+    it 'displays the edit post link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit forum_thread_path(forum_thread_1)
+
+      expect(page).to have_content('Edit post')
+    end
+  end
+
+  context 'edit post as a normal user' do
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
+
+    before do
+      user_1
+      forum_category_1
+      forum_thread_1
+      forum_post_1
+    end
+
+    it 'does not display the edit link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit forum_thread_path(forum_thread_1)
+      expect(page).to_not have_content('Edit post')
+    end
+  end
 end
