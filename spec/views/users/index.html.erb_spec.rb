@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'users/index' do
   context 'with 2 users, as an admin' do
-    let(:user_1) { User.create(username: 'User name 1', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
-    let(:user_2) { User.create(username: 'User name 2', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
-    let(:user_3) { User.create(username: 'User name 3', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+    let(:user_1) { User.create(username: 'User name 1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:user_2) { User.create(username: 'User name 2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:user_3) { User.create(username: 'User name 3', email: 'test3@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
 
     before do
       user_1
