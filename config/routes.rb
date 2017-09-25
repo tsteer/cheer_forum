@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :forum_threads
   resources :forum_posts
   resources :users
+  resources :articles
 end
  
