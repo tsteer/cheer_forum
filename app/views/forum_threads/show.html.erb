@@ -1,6 +1,6 @@
 <h1><%= @forum_thread.title %></h1>
   
-  <% if user_priviliged?(current_user, @forum_thread) %>
+  <% if user_privileged?(current_user, @forum_thread) %>
     <p><%= link_to 'Edit thread', edit_forum_thread_path(@forum_thread) %></p>
     
     <p><%= link_to 'Delete thread', forum_thread_path(@forum_thread), method: :delete, confirm: 'Are you sure you want to delete this thread?' %></p>
@@ -9,7 +9,7 @@
 <% @forum_thread.forum_posts.each do |post| %>
   <% next unless post.persisted? %>
   <p><%= post.message %></p>
-  <% if user_priviliged?(current_user, post) %>
+  <% if user_privileged?(current_user, post) %>
     <p><%= link_to 'Edit post', edit_forum_post_path(post) %></p>
 
     <p><%= link_to 'Delete post', forum_post_path(post), method: :delete, confirm: 'Are you sure you want to delete this post?', class: 'delete-post' %></p>
