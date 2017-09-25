@@ -2,6 +2,8 @@
 <p><%= @user.email %></p>
 <p><%= @user.date_of_birth %></p>
 
-<p><%= link_to 'Delete account', user_path(@user), method: :delete, confirm: 'Are you sure you want to delete your account?' %></p>
+<% if current_user.admin? || current_user.id == @user.id %>
+  <p><%= link_to 'Delete account', user_path(@user), method: :delete, confirm: 'Are you sure you want to delete your account?' %></p>
 
-<p><%= link_to 'Edit account', edit_user_path(@user)%></p>
+  <p><%= link_to 'Edit account', edit_user_path(@user)%></p>
+<% end %>

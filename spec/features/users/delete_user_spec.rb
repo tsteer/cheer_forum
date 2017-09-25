@@ -20,6 +20,7 @@ RSpec.feature 'delete user' do
     end
 
     it 'deletes 1 user' do
+      page.set_rack_session(user_id: user_2.id)
       visit user_path(user_2)
 
       click_on 'Delete account'

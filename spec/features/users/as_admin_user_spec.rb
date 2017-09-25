@@ -93,7 +93,7 @@ RSpec.feature 'edit and delete links visibility' do
       expect(page).to have_content('Delete post')
     end
   end
-  
+
   context 'edit user as an admin' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
@@ -111,6 +111,23 @@ RSpec.feature 'edit and delete links visibility' do
     end
   end
 
+  context 'edit user as an admin on the users profile page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+    let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+      user_2
+    end
+
+    it 'displays the edit user link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_2)
+
+      expect(page).to have_content('Edit account')
+    end
+  end
+
   context 'delete user as an admin' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
@@ -125,6 +142,23 @@ RSpec.feature 'edit and delete links visibility' do
       visit users_path
 
       expect(page).to have_content('Delete user')
+    end
+  end
+
+  context 'delte user as an admin on the users profile page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+    let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+      user_2
+    end
+
+    it 'displays the delete link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_2)
+
+      expect(page).to have_content('Delete account')
     end
   end
 end

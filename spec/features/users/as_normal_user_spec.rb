@@ -157,16 +157,29 @@ RSpec.feature 'edit and delete links visibility' do
     end
   end
 
-  context 'edit user as a normal user' do
+  context 'edit normal users own account' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
-    let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
 
     before do
       user_1
-      user_2
     end
 
-    it 'does not display the edit user link and redirects page' do
+    it 'does display the edit link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_1)
+
+      expect(page).to have_content('Edit account')
+    end
+  end
+
+  context 'edit normal users account on index page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+    end
+
+    it 'redirects them away from index page' do
       page.set_rack_session(user_id: user_1.id)
       visit users_path
 
@@ -174,7 +187,7 @@ RSpec.feature 'edit and delete links visibility' do
     end
   end
 
-  context 'delete user as a normal user' do
+  context 'edit other user account as a normal user' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
 
@@ -183,11 +196,57 @@ RSpec.feature 'edit and delete links visibility' do
       user_2
     end
 
-    it 'does not display the edit user link and redirects page' do
+    it 'does not display the edit link' do
+      page.set_rack_session(user_id: user_2.id)
+      visit user_path(user_1)
+
+      expect(page).to_not have_content('Edit account')
+    end
+  end
+
+  context 'delete normal users account on index page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+    end
+
+    it 'redirects them away from the index page' do
       page.set_rack_session(user_id: user_1.id)
       visit users_path
 
       expect(page).to have_content('Permission denied')
+    end
+  end
+
+  context 'delete normal users own account on their profile page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+    end
+
+    it 'displays the delete link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_1)
+
+      expect(page).to have_content('Delete account')
+    end
+  end
+
+  context 'delete other user account as normal user' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+      user_2
+    end
+    it 'does not display the delete link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_2)
+
+      expect(page).to_not have_content('Delete account')
     end
   end
 end
