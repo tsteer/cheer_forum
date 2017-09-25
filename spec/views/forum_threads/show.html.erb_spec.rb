@@ -13,6 +13,7 @@ RSpec.describe 'forum_threads/show' do
     forum_post_1
     forum_post_2
     forum_post_3
+    allow(view).to receive(:current_user).and_return(user_1)
   end
 
   context 'with 3 posts in 2 different threads' do

@@ -13,15 +13,18 @@ RSpec.feature 'creating a thread' do
   end
 
   context 'with valid details' do
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
     let(:forum_category_1) { ForumCategory.create(title: 'Category name 1') }
     let(:forum_category_2) { ForumCategory.create(title: 'Category name 2') }
 
     before do
       forum_category_1
       forum_category_2
+      user_1
     end
 
     it 'creates the thread' do
+      page.set_rack_session(user_id: user_1.id)
       visit new_forum_thread_path
 
       fill_in 'Title', with: 'New forum thread'
