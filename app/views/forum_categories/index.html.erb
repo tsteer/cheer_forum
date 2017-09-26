@@ -2,6 +2,6 @@
   <p>There are no categories</p>
 <% else %>
   <% @forum_categories.each do |f| %>
-    <%= f.title %>
+    <%= link_to f.title, forum_category_path(f) %>
   <% end %>
 <% end %>

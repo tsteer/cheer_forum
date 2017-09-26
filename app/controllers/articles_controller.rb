@@ -10,9 +10,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to articles_path, notice: 'Article posted'
+      redirect_to articles_path, flash: { success: 'Article posted' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :new
     end
   end
@@ -32,9 +32,9 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to articles_path, notice: 'Article updated'
+      redirect_to articles_path, flash: { success: 'Article updated' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :edit
     end
   end
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
   def destroy
     if @article
       Article.destroy(params[:id])
-      redirect_to articles_path, notice: 'Article deleted'
+      redirect_to articles_path, flash: { success: 'Article deleted' }
     end
   end
 

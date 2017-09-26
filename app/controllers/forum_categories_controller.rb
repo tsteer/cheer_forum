@@ -10,9 +10,9 @@ class ForumCategoriesController < ApplicationController
     @forum_category = ForumCategory.new(forum_category_params)
     
     if @forum_category.save
-      redirect_to forum_category_path(@forum_category), notice: 'Category created'
+      redirect_to forum_category_path(@forum_category), flash: { success: 'Category created' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :new
     end
   end
@@ -37,9 +37,9 @@ class ForumCategoriesController < ApplicationController
 
   def update
     if @forum_category.update(forum_category_params)
-      redirect_to forum_category_path(@forum_category), notice: 'Category updated'
+      redirect_to forum_category_path(@forum_category), flash: { success: 'Category updated' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class ForumCategoriesController < ApplicationController
   def destroy
     if @forum_category
       ForumCategory.destroy(params[:id])
-      redirect_to forum_categories_path, notice: 'Category deleted'
+      redirect_to forum_categories_path, flash: { success: 'Category deleted' }
     else
       render json: 'Category does not exist', status: 404
     end
