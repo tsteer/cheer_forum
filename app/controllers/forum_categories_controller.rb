@@ -1,5 +1,5 @@
 class ForumCategoriesController < ApplicationController
-  
+
   before_action :find_category, only: [:destroy, :update, :show, :edit]
 
   def new
