@@ -2,9 +2,12 @@
   <p>There are no articles</p>
 <% else %>
   <% @articles.each do |f| %>
-    <%= f.title %>
-    <%= f.subheading %>
-    <%= f.author %>
-    <%= f.article_text %>
+    <div class="card mb-3">
+      <div class="card-block px-3 py-2">
+        <p class="card-title"><%= link_to f.title, article_path(f) %></p>
+        <p class="card-subtitle"><%= f.author %></p>
+        <p class="card-text"><%= f.subheading %></p>
+      </div>
+    </div>
   <% end %>
 <% end %>
