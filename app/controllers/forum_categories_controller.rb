@@ -1,9 +1,8 @@
 class ForumCategoriesController < ApplicationController
-  
   before_action :find_category, only: [:destroy, :update, :show, :edit]
+  before_action :admins_only, only: [:new]
 
   def new
-    redirect_to forum_categories_path, notice: 'Permission denied' and return unless current_user.admin?
     @forum_category = ForumCategory.new
   end
 
@@ -54,7 +53,14 @@ class ForumCategoriesController < ApplicationController
     end
   end
 
+  protected
+
+  def after_redirect_path
+    forum_categories_path
+  end
+
   private
+  
   def find_category
     @forum_category = ForumCategory.find_by(id: params[:id])
   end

@@ -1,0 +1,10 @@
+<% if @articles.empty? %>
+  <p>There are no articles</p>
+<% else %>
+  <% @articles.each do |f| %>
+    <%= f.title %>
+    <%= f.subheading %>
+    <%= f.author %>
+    <%= f.article_text %>
+  <% end %>
+<% end %>

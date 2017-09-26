@@ -249,4 +249,33 @@ RSpec.feature 'edit and delete links visibility' do
       expect(page).to_not have_content('Delete account')
     end
   end
+
+  context 'edit article as a normal user' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:article) { Article.create(author: 'Test author', title: 'Test title', subheading: 'Test subheading', article_text: 'Test article text') }
+
+    before do
+      user_1
+      article
+    end
+
+    it 'does not display the link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit article_path(article)
+
+      expect(page).to_not have_content('Edit article')
+    end
+  end
+
+  context 'delete article as a normal user' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:article) { Article.create(author: 'Test author', title: 'Test title', subheading: 'Test subheading', article_text: 'Test article text') }
+
+    it 'does not display the link' do
+      page.set_rack_session(user_id: user_1.id)
+      visit article_path(article)
+
+      expect(page).to_not have_content('Delete article')
+    end
+  end
 end

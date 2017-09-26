@@ -13,7 +13,7 @@ RSpec.describe ForumCategory, type: :model do
 
     context 'with a title' do
       let(:title) { 'Category title example' }
-      it('is not valid') { is_expected.to be_valid }
+      it('is valid') { is_expected.to be_valid }
     end
   end
 end
