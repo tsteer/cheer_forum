@@ -7,5 +7,5 @@
 <% end %>
 
 <% @forum_category.forum_threads.each do |thread| %>
-  <p><%= thread.title %></p>
+  <p><%= link_to thread.title, forum_thread_path(thread) %></p>
 <% end %>
