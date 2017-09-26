@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
 
   protected
   def admins_only
-    redirect_to after_redirect_path, notice: 'Permission denied' and return unless current_user.admin?
+    redirect_to after_redirect_path, flash: { danger: 'Permission denied' } and return unless current_user.admin?
   end
 end

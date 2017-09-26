@@ -6,10 +6,10 @@ class ForumPostsController < ApplicationController
     forum_post = ForumPost.new(forum_post_params)
     forum_post.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
 
-    if forum_post.valid?
-      redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Message posted'
+    if forum_post.save
+      redirect_to forum_thread_path(forum_post.forum_thread), flash: { success: 'Message posted' }
     else
-      redirect_to forum_thread_path(forum_post.forum_thread), notice: 'Invalid details'
+      redirect_to forum_thread_path(forum_post.forum_thread), flash: { danger: 'Invalid details' }
     end
   end
 
@@ -36,9 +36,9 @@ class ForumPostsController < ApplicationController
       @forum_thread = @forum_post.forum_thread
 
     if @forum_post.update(forum_post_params)
-      redirect_to forum_thread_path(@forum_thread), notice: 'Post updated'
+      redirect_to forum_thread_path(@forum_thread), flash: { success: 'Post updated' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :edit
     end
   end
@@ -48,7 +48,7 @@ class ForumPostsController < ApplicationController
 
     if @forum_post
       ForumPost.destroy(params[:id])
-      redirect_to forum_thread_path(forum_thread), notice: 'Post deleted'
+      redirect_to forum_thread_path(forum_thread), flash: { success: 'Post deleted' }
     else
       render json: 'Post does not exist'
     end

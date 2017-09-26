@@ -10,9 +10,9 @@ class UsersController < ApplicationController
     
     if @user.save
       log_in(@user)
-      redirect_to user_path(@user), notice: 'User created'
+      redirect_to user_path(@user), flash: { success: 'User created' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :new
     end
   end
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'User updated'
+      redirect_to user_path(@user), flash: { success: 'User updated' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def destroy
     if @user
       User.destroy(params[:id])
-      redirect_to new_user_path, notice: 'Account deleted'
+      redirect_to new_user_path, flash: { success: 'Account deleted' }
     else
       render plain: '404 not found', status: 404
     end

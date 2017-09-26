@@ -10,9 +10,9 @@ class ForumThreadsController < ApplicationController
     @forum_thread = ForumThread.new(forum_thread_params)
     @forum_thread.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
     if @forum_thread.save
-      redirect_to forum_thread_path(@forum_thread), notice: 'Thread created'
+      redirect_to forum_thread_path(@forum_thread), flash: { success: 'Thread created' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :new
     end
   end
@@ -38,9 +38,9 @@ class ForumThreadsController < ApplicationController
 
   def update
     if @forum_thread.update(forum_thread_params)
-      redirect_to forum_thread_path(@forum_thread), notice: 'Thread updated'
+      redirect_to forum_thread_path(@forum_thread), flash: { success: 'Thread updated' }
     else
-      flash[:notice] = 'Invalid details'
+      flash[:danger] = 'Invalid details'
       render :edit
     end
   end
@@ -48,7 +48,7 @@ class ForumThreadsController < ApplicationController
   def destroy
     if @forum_thread
       ForumThread.destroy(params[:id])
-      redirect_to forum_categories_path, notice: 'Thread deleted'
+      redirect_to forum_categories_path, flash: { success: 'Thread deleted' }
     else
       render thread_does_not_exist
     end
