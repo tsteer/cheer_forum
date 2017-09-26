@@ -15,6 +15,7 @@
   <% next unless post.persisted? %>
   <div class="card mb-2">
     <div class="card-block px-3 py-2">
+      <p><%= post.user.username %></p>
       <p><%= post.message %></p>
     </div>
     <div class="card-footer px-3 py-1">

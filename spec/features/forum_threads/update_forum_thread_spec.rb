@@ -16,6 +16,7 @@ RSpec.feature 'updating a thread' do
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
 
     it 'returns an error' do
+      page.set_rack_session(user_id: user_1.id)
       visit edit_forum_thread_path(forum_thread_1)
 
       fill_in 'Title', with: ''

@@ -8,7 +8,7 @@ class ForumThreadsController < ApplicationController
 
   def create
     @forum_thread = ForumThread.new(forum_thread_params)
-    @forum_thread.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
+    
     if @forum_thread.save
       redirect_to forum_thread_path(@forum_thread), flash: { success: 'Thread created' }
     else
