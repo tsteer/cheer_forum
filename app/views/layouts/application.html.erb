@@ -12,7 +12,6 @@
     <%= render 'layouts/nav' %>
     <div class="container">
       <% flash.each do |message_type, message| %>
-        <% binding.pry %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <%= yield %>
