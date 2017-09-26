@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:update, :edit, :show, :destroy]
 
   def new
+    redirect_to articles_path, notice: 'Permission denied' and return unless current_user.admin?
     @article = Article.new
   end
 
