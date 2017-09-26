@@ -55,6 +55,7 @@ class ForumCategoriesController < ApplicationController
   end
 
   private
+  
   def find_category
     @forum_category = ForumCategory.find_by(id: params[:id])
   end
