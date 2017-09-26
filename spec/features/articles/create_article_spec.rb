@@ -13,34 +13,34 @@ RSpec.feature 'creating an article' do
     end
   end
 
-  context 'as an admin with invalid input' do
+  context 'as an admin' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
 
-    it 'returns an error' do
-      page.set_rack_session(user_id: user_1.id)
-      visit new_article_path
+    context 'with invalid input' do
+      it 'returns an error' do
+        page.set_rack_session(user_id: user_1.id)
+        visit new_article_path
 
-      fill_in 'Author', with: ''
-      click_on 'Post article'
+        fill_in 'Author', with: ''
+        click_on 'Post article'
 
-      expect(page).to have_content 'Invalid details'
+        expect(page).to have_content 'Invalid details'
+      end
     end
-  end
 
-  context 'as an admin with valid input' do
-    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+    context 'with valid input' do
+      it 'creates an article' do
+        page.set_rack_session(user_id: user_1.id)
+        visit new_article_path
 
-    it 'creates an article' do
-      page.set_rack_session(user_id: user_1.id)
-      visit new_article_path
+        fill_in 'Author', with: 'Test author'
+        fill_in 'Title', with: 'Test title'
+        fill_in 'Subheading', with: 'Test subheading'
+        fill_in 'Article text', with: 'Test article text'
+        click_on 'Post article'
 
-      fill_in 'Author', with: 'Test author'
-      fill_in 'Title', with: 'Test title'
-      fill_in 'Subheading', with: 'Test subheading'
-      fill_in 'Article text', with: 'Test article text'
-      click_on 'Post article'
-
-      expect(page).to have_content 'Article posted'
+        expect(page).to have_content 'Article posted'
+      end
     end
   end
 end

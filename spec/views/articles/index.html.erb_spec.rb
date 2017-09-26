@@ -1,11 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe 'articles/index' do
-  let(:article_1) { Article.create(author: 'Test author 1', title: 'Test title 1', subheading: 'Test subheading 1', article_text: 'Test article text 1') }
-  let(:article_2) { Article.create(author: 'Test author 2', title: 'Test title 2', subheading: 'Test subheading 2', article_text: 'Test article text 2') }
+  let(:article_1) do 
+    Article.create(
+      author: 'Test author 1', 
+      title: 'Test title 1', 
+      subheading: 'Test subheading 1', 
+      article_text: 'Test article text 1') 
+  end
+
+  let(:article_2) do
+    Article.create(
+      author: 'Test author 2',
+      title: 'Test title 2',
+      subheading: 'Test subheading 2',
+      article_text: 'Test article text 2')
+  end
 
   context 'with no articles' do
-    it 'displays a message' do
+    it 'displays a message telling the user there are no articles' do
       assign(:articles, [])
 
       render
