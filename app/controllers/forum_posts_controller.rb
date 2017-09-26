@@ -6,7 +6,7 @@ class ForumPostsController < ApplicationController
     forum_post = ForumPost.new(forum_post_params)
     forum_post.user = User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01')
 
-    if forum_post.valid?
+    if forum_post.save
       redirect_to forum_thread_path(forum_post.forum_thread), flash: { success: 'Message posted' }
     else
       redirect_to forum_thread_path(forum_post.forum_thread), flash: { danger: 'Invalid details' }
