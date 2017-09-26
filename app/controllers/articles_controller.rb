@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article
   end
 
   def edit
