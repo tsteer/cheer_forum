@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :admins_only, only: [:index]
   def new
     @user = User.new
   end
@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to forum_categories_path, notice: 'Permission denied' unless current_user.admin?
     @users = User.all
   end
 
@@ -52,6 +51,12 @@ class UsersController < ApplicationController
     else
       render plain: '404 not found', status: 404
     end
+  end
+
+  protected
+
+  def after_redirect_path
+    forum_categories_path
   end
 
   private

@@ -1,9 +1,8 @@
-class ArticlesController < ApplicationController
-
+class ArticlesController < ApplicationController 
   before_action :find_article, only: [:update, :edit, :show, :destroy]
+  before_action :admins_only, only: [:new]
 
   def new
-    redirect_to articles_path, notice: 'Permission denied' and return unless current_user.admin?
     @article = Article.new
   end
 
@@ -45,6 +44,12 @@ class ArticlesController < ApplicationController
       Article.destroy(params[:id])
       redirect_to articles_path, notice: 'Article deleted'
     end
+  end
+
+  protected
+
+  def after_redirect_path
+    articles_path
   end
 
   private
