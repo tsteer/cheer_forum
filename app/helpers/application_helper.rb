@@ -1,6 +1,7 @@
 module ApplicationHelper
 
   def user_privileged?(user, object)
+    return false unless user
     return true if user.admin?
 
     if object.is_a?(User)
