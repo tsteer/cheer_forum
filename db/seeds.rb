@@ -8,7 +8,15 @@ user_1 = User.create(
 )
 
 forum_category_1 = ForumCategory.create(
-  title: 'Test category title'
+  title: 'Test category title 1'
+)
+
+forum_category_2 = ForumCategory.create(
+  title: 'Test category title 2'
+)
+
+forum_category_3 = ForumCategory.create(
+  title: 'Test category title 3'
 )
 
 ForumThread.create(
