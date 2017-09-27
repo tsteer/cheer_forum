@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'updating a post' do
   context 'with no post' do
+    let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     it 'returns an error' do
+      page.set_rack_session(user_id: user_1.id)
       visit edit_forum_post_path(id: 2332)
 
       expect(page).to have_content '404'
