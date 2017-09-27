@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'accessibility without a user' do
-
   context 'create a category' do
     it 'redirects the user' do
       visit new_forum_category_path
