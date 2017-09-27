@@ -1,19 +1,42 @@
 <%= form_for @user do |f| %>
+<div class="card mb-3">
+  <div class="card-block px-3 py-2">
+  <div class="form-group row">
+    <%= f.label :username, 'Username', class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :username, 'Username' %>
-  <%= f.text_field :username %>
+  <div class="form-group row">
+    <%= f.label :email, 'Email', class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
+  <div class="form-group row">
+    <%= f.label :date_of_birth, 'Date of birth', class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= f.text_field :date_of_birth, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :date_of_birth, 'Date of birth' %>
-  <%= f.text_field :date_of_birth %>
+  <div class="form-group row">
+    <%= f.label :password, 'Password', class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= f.text_field :password, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :password, 'Password' %>
-  <%= f.text_field :password %>
+  <div class="form-group row">
+    <%= f.label :password_confirmation, 'Password confirmation', class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= f.text_field :password_confirmation, class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :password_confirmation, 'Password confirmation' %>
-  <%= f.text_field :password_confirmation %>
-
-  <%= f.submit button_label %>
+  <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
 <% end %>
+</div>
+</div>
