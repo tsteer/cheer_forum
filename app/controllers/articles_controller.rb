@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController 
   before_action :find_article, only: [:update, :edit, :show, :destroy]
+  before_action :not_current_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :admins_only, only: [:new]
 
   def new
