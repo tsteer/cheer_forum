@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :admins_only, only: [:index]
 
   def new
+    redirect_to root_path, flash: { danger: 'You are already signed up!' } and return if current_user
     @user = User.new
   end
 

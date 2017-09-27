@@ -265,11 +265,3 @@ RSpec.feature 'accessibility without a user' do
     end
   end
 end
-
-
-
-
-
-
-
-
