@@ -12,6 +12,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'edit a category' do
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+
     it 'redirects the user' do
       visit edit_forum_category_path(forum_category_1)
 
@@ -21,6 +22,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'delete a category' do
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+
     it 'does not display the link' do
       visit forum_category_path(forum_category_1)
 
@@ -47,6 +49,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'show a category' do
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
+
     it 'displays the category' do
       visit forum_category_path(forum_category_1)
 
@@ -66,6 +69,7 @@ RSpec.feature 'accessibility without a user' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+
     it 'redirects the user' do
       visit edit_forum_thread_path(forum_thread_1)
 
@@ -77,6 +81,7 @@ RSpec.feature 'accessibility without a user' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+
     it 'does not display the link' do
       visit forum_thread_path(forum_thread_1)
 
@@ -88,6 +93,7 @@ RSpec.feature 'accessibility without a user' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+
     it 'shows the thread' do
       visit forum_thread_path(forum_thread_1)
 
@@ -99,6 +105,7 @@ RSpec.feature 'accessibility without a user' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+
     it 'does not show the post form' do
       visit forum_thread_path(forum_thread_1)
 
@@ -111,7 +118,7 @@ RSpec.feature 'accessibility without a user' do
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
-    
+
     it 'redirects the user' do
       visit edit_forum_post_path(forum_post_1)
 
@@ -124,6 +131,7 @@ RSpec.feature 'accessibility without a user' do
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
+
     it 'does not display the link' do
       visit forum_thread_path(forum_thread_1)
 
@@ -161,6 +169,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'edit an article' do
     let(:article) { Article.create(author: 'Test author', title: 'Test title', subheading: 'Test subheading', article_text: 'Test article text') }
+
     it 'redirects the user' do
       visit edit_article_path(article)
 
@@ -170,6 +179,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'delete an article' do
     let(:article) { Article.create(author: 'Test author', title: 'Test title', subheading: 'Test subheading', article_text: 'Test article text') }
+
     it 'does not display the delete link' do
       visit article_path(article)
 
@@ -215,6 +225,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'edit user account' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
     it 'redirects the user' do
       visit edit_user_path(user_1)
 
@@ -224,6 +235,7 @@ RSpec.feature 'accessibility without a user' do
 
   context 'delete user account' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
     it 'does not display the delete link' do
       visit user_path(user_1)
 
@@ -234,6 +246,7 @@ RSpec.feature 'accessibility without a user' do
   context 'show all users' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
     it 'redirects the user' do
       visit users_path
 
@@ -244,6 +257,7 @@ RSpec.feature 'accessibility without a user' do
   context 'show a user' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
     it 'shows the users page' do
       visit user_path(user_2)
 
