@@ -21,9 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user
-      @user
-    else
+    unless @user
       render plain: '404 not found', status: 404
     end
   end

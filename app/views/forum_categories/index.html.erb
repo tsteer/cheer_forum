@@ -1,14 +1,16 @@
 <% if @forum_categories.empty? %>
   <p>There are no categories</p>
 <% else %>
-  <div class="card mb-3">
-    <div class="card-block px-3 py-2">
-      <% @forum_categories.each do |f| %>
+  <% @forum_categories.each do |f| %>
+    <div class="card mb-3">
+      <div class="card-block px-3 py-2">
         <%= link_to f.title, forum_category_path(f), class: 'card-title' %>
-        &emsp;
-      <% end %>
+        <% f.forum_threads.each do |thread| %>
+          <p class="card-text"><%= thread.title %></p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="card mb-2">
     <div class="card-block px-3 py-3">
       <%= link_to 'New thread', new_forum_thread_path, class: 'card-link' %>

@@ -23,9 +23,7 @@ class ForumCategoriesController < ApplicationController
   end
 
   def show
-    if @forum_category
-      @forum_category
-    else
+    unless @forum_category
       render json: 'Category does not exist', status: 404
     end
   end
