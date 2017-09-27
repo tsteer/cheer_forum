@@ -1,6 +1,6 @@
 class ForumThreadsController < ApplicationController
-
   before_action :find_thread, only: [:show, :update, :destroy, :edit]
+  before_action :not_current_user, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @forum_thread = ForumThread.new

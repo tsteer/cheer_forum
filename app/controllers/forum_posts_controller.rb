@@ -1,6 +1,6 @@
 class ForumPostsController < ApplicationController
-
   before_action :find_post, only: [:show, :update, :destroy, :edit]
+  before_action :not_current_user, only: [:create, :edit, :update, :destroy]
 
   def create
     forum_post = ForumPost.new(forum_post_params)

@@ -1,5 +1,6 @@
 class ForumCategoriesController < ApplicationController
   before_action :find_category, only: [:destroy, :update, :show, :edit]
+  before_action :not_current_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :admins_only, only: [:new]
 
   def new

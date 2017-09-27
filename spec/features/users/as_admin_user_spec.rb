@@ -191,4 +191,15 @@ RSpec.feature 'edit and delete links visibility' do
       expect(page).to have_content('Delete article')
     end
   end
+
+  context 'visit the signup page' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
+
+    it 'redirects the user' do
+      page.set_rack_session(user_id: user_1.id)
+      visit new_user_path
+
+      expect(page).to have_content('You are already signed up!')
+    end
+  end
 end

@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  before_action :not_current_user, only: [:edit, :update, :destroy, :index]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :admins_only, only: [:index]
+
   def new
+    redirect_to root_path, flash: { danger: 'You are already signed up!' } and return if current_user
     @user = User.new
   end
 
