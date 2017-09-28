@@ -1,6 +1,7 @@
 <div class="card mb-3">
   <div class="card-block px-3 py-2">
     <h1 class="card-title"><%= @forum_thread.title %></h1>
+    <p><%= link_to @forum_thread.user.username, user_path(@forum_thread.user), class: 'card-link' %></p>
   </div>
   <% if user_privileged?(current_user, @forum_thread) %>
     <div class="card-footer px-3 py-1">
@@ -15,7 +16,7 @@
   <% next unless post.persisted? %>
   <div class="card mb-2">
     <div class="card-block px-3 py-2">
-      <p><%= post.user.username %></p>
+      <p><%= link_to post.user.username, user_path(post.user), class: 'card-link' %></p>
       <p><%= post.message %></p>
     </div>
     <% if user_privileged?(current_user, post) %>
