@@ -19,8 +19,6 @@
         </div>
       <% else %>
         <%= link_to 'Log in', login_path, class: 'nav-item nav-link' %>
-      <% end %>
-      <% if !current_user %>
         <%= link_to 'Sign up', new_user_path, class: 'nav-item nav-link' %>
       <% end %>
     </div>
