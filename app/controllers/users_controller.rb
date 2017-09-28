@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :not_current_user, only: [:edit, :update, :destroy, :index]
+  before_action :not_current_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :not_users_account, only: [:show]
   before_action :admins_only, only: [:index]
 
   def new
@@ -60,6 +61,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def not_users_account
+    redirect_to root_path, flash: { danger: 'You do not have permission to access this page' } and return unless current_user.admin? || @user == current_user
+  end
 
   def find_user
     @user = User.find_by(id: params[:id])

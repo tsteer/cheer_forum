@@ -157,6 +157,38 @@ RSpec.feature 'edit and delete links visibility' do
     end
   end
 
+  context 'view users own profile page as a normal user' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+    end
+
+    it 'displays the users profile page' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_1)
+
+      expect(page).to have_content('Testusername1')
+    end
+  end
+
+  context 'view other users profile page as a normal user' do
+    let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+    let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before do
+      user_1
+      user_2
+    end
+
+    it 'displays the users profile page' do
+      page.set_rack_session(user_id: user_1.id)
+      visit user_path(user_2)
+
+      expect(page).to have_content('You do not have permission to access this page')
+    end
+  end
+
   context 'edit normal users own account' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
 

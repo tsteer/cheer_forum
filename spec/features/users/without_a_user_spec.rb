@@ -260,7 +260,7 @@ RSpec.feature 'accessibility without a user' do
     it 'shows the users page' do
       visit user_path(user_2)
 
-      expect(page).to have_content(user_2.username)
+      expect(page).to have_content('You must be logged in to do this')
     end
   end
 end
