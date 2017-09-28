@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @articles = Article.all
-    @forum_threads = ForumThread.all
+    @articles = Article.latest
+    @forum_threads = ForumThread.latest
   end
 end
