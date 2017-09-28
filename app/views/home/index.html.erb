@@ -1,6 +1,8 @@
-<% if @articles.empty? %>
-  <p>There are no articles</p>
-<% else %>
+<% if @forum_threads %>
+  <% @forum_threads.each do |thread| %>
+    <%= thread.title %>
+  <% end %>
+<% elsif @articles %>
   <% @articles.each do |article| %>
     <%= article.title %>
   <% end %>
