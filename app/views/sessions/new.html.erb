@@ -1,11 +1,16 @@
 <%= form_for(:session, url: login_path) do |f| %>
-
-  <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
-
-  <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
-
-  <%= f.submit 'Log In' %>
+  <div class="card ">
+    <div class="card-block px-3 py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 offset-md-3">
+        <div class="form-group">
+          <%= f.text_field :email, placeholder: 'email@email.com', class: 'form-control' %>
+          <%= f.password_field :password, placeholder: 'password', class: 'form-control' %>
+          <%= f.submit 'Log In', class: 'btn btn-light btn-lg mt-1' %>
+        </div>
+      </div>
+    </div>
+      
+    </div>
+  </div>
 <% end %>
- 
