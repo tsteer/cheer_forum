@@ -1,1 +1,7 @@
-<%= link_to 'Sign up', new_user_path %>
+<% if @articles.empty? %>
+  <p>There are no articles</p>
+<% else %>
+  <% @articles.each do |article| %>
+    <%= article.title %>
+  <% end %>
+<% end %>
