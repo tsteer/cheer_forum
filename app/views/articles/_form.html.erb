@@ -1,16 +1,31 @@
 <%= form_for @article do |f| %>
-
-  <%= f.label :author, 'Author' %>
-  <%= f.text_field :author %>
-
-  <%= f.label :title, 'Title' %>
-  <%= f.text_field :title %>
-
-  <%= f.label :subheading, 'Subheading' %>
-  <%= f.text_field :subheading %>
-
-  <%= f.label :article_text, 'Article text' %>
-  <%= f.text_field :article_text %>
-
-  <%= f.submit button_label %>
+<div class="card mb-3">
+  <div class="card-block px-3 py-2">
+    <div class="form-group row">
+      <%= f.label :author, 'Author', class: 'col-3 col-form-label' %>
+      <div class="col-9">
+        <%= f.text_field :author, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :title, 'Title', class: 'col-3 col-form-label' %>
+      <div class="col-9">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :subheading, 'Subheading', class: 'col-3 col-form-label' %>
+      <div class="col-9">
+        <%= f.text_field :subheading, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :article_text, 'Article text', class: 'col-3 col-form-label' %>
+      <div class="col-9">
+        <%= f.text_area :article_text, class: "form-control" %>
+      </div>
+    </div>
+      <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
+    </div>
+  </div>
 <% end %>
