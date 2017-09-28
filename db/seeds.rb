@@ -20,8 +20,55 @@ forum_category_3 = ForumCategory.create(
 )
 
 ForumThread.create(
-  title: 'Forum thread title',
+  title: 'Forum thread title 1',
   forum_category: forum_category_1,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 2',
+  forum_category: forum_category_1,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 3',
+  forum_category: forum_category_1,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 4',
+  forum_category: forum_category_2,
+  user: user_1
+)
+ForumThread.create(
+  title: 'Forum thread title 5',
+  forum_category: forum_category_2,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 6',
+  forum_category: forum_category_2,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 7',
+  forum_category: forum_category_3,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 8',
+  forum_category: forum_category_3,
+  user: user_1
+)
+
+ForumThread.create(
+  title: 'Forum thread title 9',
+  forum_category: forum_category_3,
   user: user_1
 )
 

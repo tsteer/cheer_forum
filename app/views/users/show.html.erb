@@ -1,9 +1,37 @@
-<p><%= @user.username %></p>
-<p><%= @user.email %></p>
-<p><%= @user.date_of_birth %></p>
+<div class="card-container">
+  <div class="card mb-3">
+    <div class="card-block">
+      <div class="row px-3 py-2">
+        <div class="col-4">
+          <p class="card-subtitle pt-1 pb-2">Username: </p>
+        </div>
+        <div class="col-6">
+          <p class="card-subtitle pt-1 pb-2"><%= @user.username %></p>
+        </div>
+      </div>
+      <div class="row px-3 py-2">
+        <div class="col-4">
+          <p class="card-subtitle pt-1 pb-2">Email: </p>
+        </div>
+        <div class="col-6">
+          <p class="card-subtitle pt-1 pb-2"><%= @user.email %></p>
+        </div>
+      </div>
+      <div class="row px-3 py-2">
+        <div class="col-4">
+          <p class="card-subtitle pt-1 pb-2">Date of birth: </p>
+        </div>
+        <div class="col-6">
+          <p class="card-subtitle pt-1 pb-2"><%= @user.date_of_birth %></p>
+        </div>
+      </div>
 
-<% if user_privileged?(current_user, @user) %>
-  <p><%= link_to 'Delete account', user_path(@user), method: :delete, confirm: 'Are you sure you want to delete your account?' %></p>
-
-  <p><%= link_to 'Edit account', edit_user_path(@user)%></p>
-<% end %>
+      <% if user_privileged?(current_user, @user) %>
+        <div class="card-footer px-3 py-1">
+          <%= link_to 'Edit account', edit_user_path(@user), class: 'card-link'%>
+          <%= link_to 'Delete account', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: 'card-link' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

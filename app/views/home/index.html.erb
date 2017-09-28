@@ -1,1 +1,9 @@
-<%= link_to 'Sign up', new_user_path %>
+<% if @forum_threads %>
+  <% @forum_threads.each do |thread| %>
+    <%= thread.title %>
+  <% end %>
+<% elsif @articles %>
+  <% @articles.each do |article| %>
+    <%= article.title %>
+  <% end %>
+<% end %>
