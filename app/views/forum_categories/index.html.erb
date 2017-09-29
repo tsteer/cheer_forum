@@ -10,15 +10,17 @@
     <div class="card mb-3">
       <div class="card-block px-3 py-2">
         <%= link_to f.title, forum_category_path(f), class: 'card-title heading-2' %>
-        </div>
-        </div>
-    <div class="card mb-3">
-
-      <div class="card-block px-3 py-2">
-        <% f.forum_threads.each do |thread| %>
-          <p><%= link_to thread.title, forum_thread_path(thread), class: 'card-link heading-3' %></p>
-        <% end %>
       </div>
     </div>
+
+    <% if f.forum_threads.present? %>
+      <div class="card mb-3">
+        <div class="card-block px-3 py-2">
+          <% f.forum_threads.each do |thread| %>
+            <p><%= link_to thread.title, forum_thread_path(thread), class: 'card-link heading-3' %></p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
