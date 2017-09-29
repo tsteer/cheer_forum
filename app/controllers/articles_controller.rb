@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    @articles = Article.order(created_at: :desc)
   end
 
   def show
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to articles_path, flash: { success: 'Article updated' }
+      redirect_to article_path(@article), flash: { success: 'Article updated' }
     else
       flash[:danger] = 'Invalid details'
       render :edit
