@@ -26,7 +26,7 @@ RSpec.feature 'updating a post' do
       page.set_rack_session(user_id: user_1.id)
       visit edit_forum_post_path(forum_post_1)
 
-      fill_in 'Message', with: ''
+      fill_in 'forum_post_message', with: ''
       click_on 'Update post'
 
       expect(page).to have_content 'Invalid details'
@@ -47,7 +47,7 @@ RSpec.feature 'updating a post' do
       page.set_rack_session(user_id: user_1.id)
       visit edit_forum_post_path(forum_post_1)
 
-      fill_in 'Message', with: 'New forum post message'
+      fill_in 'forum_post_message', with: 'New forum post message'
       click_on 'Update post'
 
       expect(page).to have_content 'Post updated'

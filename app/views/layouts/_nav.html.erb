@@ -4,8 +4,11 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavMenu">
+  <div class="collapse navbar-collapse justify-content-end pr-2" id="navbarNavMenu">
     <div class="navbar-nav">
+      <% if current_user && current_user.admin? %>
+        <%= link_to 'All users', users_path, class: 'nav-item nav-link' %>
+      <% end %>
       <%= link_to 'Forum', forum_categories_path, class: 'nav-item nav-link' %>
       <%= link_to 'Articles', articles_path, class: 'nav-item nav-link' %>
       <% if current_user %>

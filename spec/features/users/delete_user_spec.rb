@@ -6,7 +6,7 @@ RSpec.feature 'delete user' do
     it 'returns an error' do
       visit user_path(id: 32863)
 
-      expect(page).to have_content '404'
+      expect(page).to have_content 'You must be logged in to do this'
     end
   end
 

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       remember user
-      redirect_to :forum_categories, flash: { success: 'Logged in' }
+      redirect_to root_path, flash: { success: 'Logged in' }
     else
       flash[:danger] = 'Invalid email/password combination'
       render :new

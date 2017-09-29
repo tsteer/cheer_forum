@@ -10,7 +10,7 @@ RSpec.feature 'creating a forum post' do
       page.set_rack_session(user_id: user_1.id)
       visit forum_thread_path(forum_thread_1)
 
-      fill_in 'Message', with: 'Test post message'
+      fill_in 'forum_post_message', with: 'Test post message'
       click_on 'Post'
 
       expect(page).to have_content 'Message posted'
@@ -22,7 +22,7 @@ RSpec.feature 'creating a forum post' do
       page.set_rack_session(user_id: user_1.id)
       visit forum_thread_path(forum_thread_1)
 
-      fill_in 'Message', with: ''
+      fill_in 'forum_post_message', with: ''
       click_on 'Post'
 
       expect(page).to have_content 'Invalid details'

@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   def check_user_age
     if self.date_of_birth > 14.years.ago
-      errors.add(:base, "Date of birth is within last 14 years")
+      errors.add(:base, "Users must be 14 or older")
     end
   end
 

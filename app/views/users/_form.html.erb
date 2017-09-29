@@ -1,45 +1,45 @@
 <%= form_for @user do |f| %>
-<div class="card mb-3">
-  <div class="card-block px-3 py-2">
-  <div class="form-group row heading-1">
-    <%= f.label title, class: 'col-12' %>
-  </div>
-  <div class="form-group row">
-    <%= f.label :username, 'Username', class: 'col-3 col-form-label' %>
-    <div class="col-9">
-      <%= f.text_field :username, class: "form-control" %>
+  <%= render 'shared/error_messages' %>
+  <div class="card mb-3">
+    <div class="card-block px-3 py-2">
+      <div class="form-group row heading-1">
+        <%= f.label title, class: 'col-12' %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :username, 'Username', class: 'col-3 col-form-label' %>
+        <div class="col-9">
+          <%= f.text_field :username, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :email, 'Email', class: 'col-3 col-form-label' %>
+        <div class="col-9">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password, 'Password', class: 'col-3 col-form-label' %>
+        <div class="col-9">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :password_confirmation, 'Password confirmation', class: 'col-3 col-form-label' %>
+        <div class="col-9">
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :date_of_birth, 'Date of birth', class: 'col-3 col-form-label' %>
+        <div class="col-9">
+          <%= f.date_select :date_of_birth, start_year: 1920, class: "form-control" %>
+        </div>
+      </div>
+      <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
     </div>
   </div>
-
-  <div class="form-group row">
-    <%= f.label :email, 'Email', class: 'col-3 col-form-label' %>
-    <div class="col-9">
-      <%= f.text_field :email, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :password, 'Password', class: 'col-3 col-form-label' %>
-    <div class="col-9">
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :password_confirmation, 'Password confirmation', class: 'col-3 col-form-label' %>
-    <div class="col-9">
-      <%= f.password_field :password_confirmation, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <%= f.label :date_of_birth, 'Date of birth', class: 'col-3 col-form-label' %>
-    <div class="col-9">
-      <%= f.date_select :date_of_birth, start_year: 1920, class: "form-control" %>
-    </div>
-  </div>
-
-  <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
 <% end %>
-</div>
-</div>
