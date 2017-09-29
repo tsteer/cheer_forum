@@ -22,10 +22,11 @@
     <div class="form-group row">
       <%= f.label :article_text, 'Article text', class: 'col-3 col-form-label' %>
       <div class="col-9">
-        <%= f.text_area :article_text, class: "form-control" %>
+        <%= f.text_area :article_text, class: "form-control tinymce" %>
       </div>
     </div>
       <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
     </div>
   </div>
 <% end %>
+<%= tinymce %>
