@@ -1,8 +1,10 @@
-<div class="card mb-2">
-  <div class="card-block px-3 py-3">
-    <%= link_to 'New article', new_article_path, class: 'card-link' %>
+<% if current_user && current_user.admin? %>
+  <div class="card mb-2">
+    <div class="card-block px-3 py-3">
+      <%= link_to 'New article', new_article_path, class: 'card-link' %>
+    </div>
   </div>
-</div>
+<% end %>
 <% if @articles.empty? %>
   <p>There are no articles</p>
 <% else %>
