@@ -42,5 +42,15 @@ RSpec.feature 'updating a thread' do
 
       expect(page).to have_content 'Thread updated'
     end
+
+    it 'updates the thread message' do
+      page.set_rack_session(user_id: user_1.id)
+      visit edit_forum_thread_path(forum_thread_1)
+
+      fill_in 'Enter your message...', with: 'New forum thread message'
+      click_on 'Update thread'
+
+      expect(page).to have_content 'Thread updated'
+    end
   end
 end
