@@ -30,7 +30,7 @@ RSpec.feature 'visibility of' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2, message: 'Test message') }
 
     it 'displays the edit link' do
       page.set_rack_session(user_id: user_1.id)
@@ -44,7 +44,7 @@ RSpec.feature 'visibility of' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2, message: 'Test message') }
 
     it 'displays the delete link' do
       page.set_rack_session(user_id: user_1.id)
@@ -58,7 +58,7 @@ RSpec.feature 'visibility of' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_2) }
 
     before do
@@ -81,7 +81,7 @@ RSpec.feature 'visibility of' do
     let(:user_1) { User.create(username: 'Testusername1', email: 'test1@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:user_2) { User.create(username: 'Testusername2', email: 'test2@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_2, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_2) }
 
     before do

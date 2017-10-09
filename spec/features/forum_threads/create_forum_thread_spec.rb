@@ -33,6 +33,7 @@ RSpec.feature 'creating a thread' do
 
       fill_in 'Title', with: 'New forum thread'
       select forum_category_2.title, from: 'Forum category'
+      fill_in 'Message', with: 'Test message'
       click_on 'Create thread'
 
       expect(page).to have_content 'Thread created'

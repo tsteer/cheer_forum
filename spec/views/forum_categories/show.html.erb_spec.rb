@@ -4,9 +4,9 @@ RSpec.describe 'forum_categories/show' do
   let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password') }
   let(:forum_category_1) { ForumCategory.create(title: 'Category name 1') }
   let(:forum_category_2) { ForumCategory.create(title: 'Category name 2') }
-  let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1) }
-  let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1) }
-  let(:forum_thread_3) { ForumThread.create(title: 'Forum thread title 3', forum_category: forum_category_1, user: user_1) }
+  let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1, message: 'Test message') }
+  let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1, message: 'Test message') }
+  let(:forum_thread_3) { ForumThread.create(title: 'Forum thread title 3', forum_category: forum_category_1, user: user_1, message: 'Test message') }
 
   before do
     forum_thread_1

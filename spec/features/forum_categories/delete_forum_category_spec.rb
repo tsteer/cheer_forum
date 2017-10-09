@@ -5,8 +5,8 @@ RSpec.feature 'forum_categories/show' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
     let(:forum_category_2) { ForumCategory.create(title: 'Forum category title 2') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1) }
-    let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1, message: 'Test message') }
+    let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
     let(:forum_post_2) { ForumPost.create(message: 'Forum post message 2', forum_thread: forum_thread_2, user: user_1) }
     
