@@ -27,8 +27,8 @@ RSpec.describe 'forum_categories/index' do
   end
 
   context 'with 2 categories and 2 threads' do
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1) }
-    let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title 1', forum_category: forum_category_1, user: user_1, message: 'Test message') }
+    let(:forum_thread_2) { ForumThread.create(title: 'Forum thread title 2', forum_category: forum_category_2, user: user_1, message: 'Test message') }
   
     it 'displays the categories and threads' do
       assign(:forum_categories, [forum_category_1, forum_category_2])

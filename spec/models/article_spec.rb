@@ -43,10 +43,10 @@ RSpec.describe Article, type: :model do
 
   describe '.latest' do
     context 'with 4 articles' do
-      let(:article1) { Article.create(author: 'Test author 1', title: 'Test title 1', subheading: 'Test subheading 1', article_text: 'Test article text 1', updated_at: Date.today-1.day) }
-      let(:article2) { Article.create(author: 'Test author 2', title: 'Test title 2', subheading: 'Test subheading 2', article_text: 'Test article text 2', updated_at: Date.today-1.month) }
-      let(:article3) { Article.create(author: 'Test author 3', title: 'Test title 3', subheading: 'Test subheading 3', article_text: 'Test article text 3', updated_at: Date.today-2.days) }
-      let(:article4) { Article.create(author: 'Test author 4', title: 'Test title 4', subheading: 'Test subheading 4', article_text: 'Test article text 4', updated_at: Date.today-1.week) }
+      let(:article1) { Article.create(author: 'Test author 1', title: 'Test title 1', subheading: 'Test subheading 1', article_text: 'Test article text 1', created_at: Date.today-1.day) }
+      let(:article2) { Article.create(author: 'Test author 2', title: 'Test title 2', subheading: 'Test subheading 2', article_text: 'Test article text 2', created_at: Date.today-1.month) }
+      let(:article3) { Article.create(author: 'Test author 3', title: 'Test title 3', subheading: 'Test subheading 3', article_text: 'Test article text 3', created_at: Date.today-2.days) }
+      let(:article4) { Article.create(author: 'Test author 4', title: 'Test title 4', subheading: 'Test subheading 4', article_text: 'Test article text 4', created_at: Date.today-1.week) }
 
       before do
         article1

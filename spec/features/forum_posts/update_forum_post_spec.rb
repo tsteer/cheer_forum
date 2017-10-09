@@ -15,7 +15,7 @@ RSpec.feature 'updating a post' do
   context 'with invalid details as an admin' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:forum_category_1) { ForumCategory.create(title: 'Test category title') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
 
     before do
@@ -36,7 +36,7 @@ RSpec.feature 'updating a post' do
   context 'with valid details as an admin' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: true) }
     let(:forum_category_1) { ForumCategory.create(title: 'Test category title') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
 
     before do

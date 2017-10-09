@@ -61,7 +61,7 @@ class ForumThreadsController < ApplicationController
   end
 
   def forum_thread_params
-    params.require(:forum_thread).permit(:title, :forum_category_id, :user_id)
+    params.require(:forum_thread).permit(:title, :forum_category_id, :user_id, :message)
   end 
 
   def thread_does_not_exist

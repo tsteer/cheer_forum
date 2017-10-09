@@ -1,6 +1,7 @@
 <div class="card mb-3">
   <div class="card-block px-3 py-2">
     <h1 class="card-title"><%= @forum_thread.title %></h1>
+    <p><%= @forum_thread.message %></p>
   </div>
   <% if user_privileged?(current_user, @forum_thread) %>
     <p><%= link_to @forum_thread.user.username, user_path(@forum_thread.user), class: 'card-link col-3' %></p>

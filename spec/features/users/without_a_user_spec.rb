@@ -67,7 +67,7 @@ RSpec.feature 'accessibility without a user' do
   context 'edit a thread' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
 
     it 'redirects the user' do
       visit edit_forum_thread_path(forum_thread_1)
@@ -79,7 +79,7 @@ RSpec.feature 'accessibility without a user' do
   context 'delete a thread' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
 
     it 'does not display the link' do
       visit forum_thread_path(forum_thread_1)
@@ -91,7 +91,7 @@ RSpec.feature 'accessibility without a user' do
   context 'show a thread' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
 
     it 'shows the thread' do
       visit forum_thread_path(forum_thread_1)
@@ -103,7 +103,7 @@ RSpec.feature 'accessibility without a user' do
   context 'create a post' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
 
     it 'does not show the post form' do
       visit forum_thread_path(forum_thread_1)
@@ -115,7 +115,7 @@ RSpec.feature 'accessibility without a user' do
   context 'edit a post' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
 
     it 'redirects the user' do
@@ -128,7 +128,7 @@ RSpec.feature 'accessibility without a user' do
   context 'delete a post' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
 
     it 'does not display the link' do
@@ -141,7 +141,7 @@ RSpec.feature 'accessibility without a user' do
   context 'show a post' do
     let(:user_1) { User.create(username: 'Testusername', email: 'test@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
     let(:forum_category_1) { ForumCategory.create(title: 'Forum category title 1') }
-    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1) }
+    let(:forum_thread_1) { ForumThread.create(title: 'Forum thread title', forum_category: forum_category_1, user: user_1, message: 'Test message') }
     let(:forum_post_1) { ForumPost.create(message: 'Forum post message 1', forum_thread: forum_thread_1, user: user_1) }
 
     before do
