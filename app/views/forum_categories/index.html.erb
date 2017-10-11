@@ -14,8 +14,8 @@
     </div>
 
     <% if f.forum_threads.present? %>
-      <div class="card mb-3">
-        <div class="card-block px-3 py-2">
+      <div class="card my-3">
+        <div class="card-block px-3 pt-2">
           <% f.forum_threads.each do |thread| %>
             <p><%= link_to thread.title, forum_thread_path(thread), class: 'card-link heading-3' %></p>
           <% end %>
