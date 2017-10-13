@@ -15,7 +15,7 @@ RSpec.describe PasswordResetsController, type: :controller do
     before { user.create_reset_digest }
 
     it "returns http success" do
-      get :edit, params: { email: user.email }
+      get :edit, params: { email: user.email, id: 'lols' }
       expect(response).to have_http_status(:success)
     end
   end

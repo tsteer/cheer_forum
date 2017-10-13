@@ -38,5 +38,42 @@ RSpec.feature 'resetting a users password' do
         expect(page).to have_content 'Password has been reset'
       end
     end
+
+    context 'with the correct email and wrong token' do
+      it 'emails the user with a password reset link' do
+        user.create_reset_digest
+        visit edit_password_reset_path(id: '', email: user.email)
+
+        expect(page).to have_content 'You are not authorized to view this page'
+      end
+    end
+
+    context 'with the correct email and token' do
+      it 'no passwords entered' do
+        user.create_reset_digest
+
+        visit edit_password_reset_path(id: user.reset_token, email: user.email)
+
+        fill_in 'Password', with: ''
+        fill_in 'Password confirmation', with: ''
+        click_on 'Update password'
+
+        expect(page).to have_content 'Cannot be empty'
+      end
+    end
+
+    context 'with the correct email and token' do
+      it 'invalid password and confirmation' do
+        user.create_reset_digest
+
+        visit edit_password_reset_path(id: user.reset_token, email: user.email)
+
+        fill_in 'Password', with: 'newpassword'
+        fill_in 'Password confirmation', with: 'dhjfksd'
+        click_on 'Update password'
+
+        expect(page).to have_content 'Password and confirmation must match'
+      end
+    end
   end
 end

@@ -20,17 +20,22 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+    if params[:id].blank?
+      flash[:danger] = 'You are not authorized to view this page'
+      redirect_to root_url
+    end
   end
 
   def update
     if params[:user][:password].empty?
-      @user.errors.add(:password, 'cannot be empty')
+      @user.errors.add(:password, 'Cannot be empty')
       render :edit
     elsif @user.update_attributes(user_params)
       log_in @user
       flash[:success] = 'Password has been reset'
       redirect_to root_url
     else
+      flash[:danger] = 'Password and confirmation must match'
       render :edit
     end
   end
