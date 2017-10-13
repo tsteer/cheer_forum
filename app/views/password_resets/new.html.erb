@@ -5,7 +5,9 @@
           <div class="form-group">
             <h2>Password reset</h2>
             <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+              <%= f.label :email, 'Email', class: 'col-3 col-form-label' %>
               <%= f.text_field :email, placeholder: 'email@email.com', class: 'form-control' %>
+              <%= f.submit 'Submit', class: 'btn btn-light btn-lg mt-1' %>
             <% end %>
           </div>
         </div>

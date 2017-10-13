@@ -10,10 +10,13 @@ RSpec.describe PasswordResetsController, type: :controller do
   end
 
   describe "GET #edit" do
+    let!(:user) { User.create(username: 'Testusername', email: 'test91@test.com', date_of_birth: '1990-08-01', password: 'password', password_confirmation: 'password', admin: false) }
+
+    before { user.create_reset_digest }
+
     it "returns http success" do
-      get :edit
+      get :edit, params: { email: user.email }
       expect(response).to have_http_status(:success)
     end
   end
-
 end
