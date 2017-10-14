@@ -26,7 +26,7 @@ RSpec.feature 'resetting a users password' do
     end
 
     context 'with the correct email and token' do
-      it 'emails the user with a password reset link' do
+      it 'resets the password' do
         user.create_reset_digest
 
         visit edit_password_reset_path(id: user.reset_token, email: user.email)
@@ -36,20 +36,23 @@ RSpec.feature 'resetting a users password' do
         click_on 'Update password'
 
         expect(page).to have_content 'Password has been reset'
+        user.reload
+        expect(user.reset_digest).to eq(nil)
       end
     end
 
     context 'with the correct email and wrong token' do
-      it 'emails the user with a password reset link' do
+      it 'displays an error' do
         user.create_reset_digest
+
         visit edit_password_reset_path(id: '', email: user.email)
 
         expect(page).to have_content 'You are not authorized to view this page'
       end
     end
 
-    context 'with the correct email and token' do
-      it 'no passwords entered' do
+    context 'with the correct email and token but no passwords entered' do
+      it 'displays an error' do
         user.create_reset_digest
 
         visit edit_password_reset_path(id: user.reset_token, email: user.email)
@@ -62,8 +65,8 @@ RSpec.feature 'resetting a users password' do
       end
     end
 
-    context 'with the correct email and token' do
-      it 'invalid password and confirmation' do
+    context 'with the correct email and token but an invalid password and confirmation' do
+      it 'displays an error' do
         user.create_reset_digest
 
         visit edit_password_reset_path(id: user.reset_token, email: user.email)
@@ -73,6 +76,17 @@ RSpec.feature 'resetting a users password' do
         click_on 'Update password'
 
         expect(page).to have_content 'Password and confirmation must match'
+      end
+    end
+
+    context 'with an expired token' do
+      it 'displays an error' do
+        user.create_reset_digest
+        user.update_attribute(:reset_sent_at, 3.hours.ago)
+
+        visit edit_password_reset_path(id: user.reset_token, email: user.email)
+
+        expect(page).to have_content 'Password reset has expired'
       end
     end
   end
