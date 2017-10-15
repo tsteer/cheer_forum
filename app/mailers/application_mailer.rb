@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'donotreply@thecheerpost.com'
+  default from: 'hello@thecheerpost.com'
   layout 'mailer'
 end
