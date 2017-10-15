@@ -1,15 +1,27 @@
 .heading-1 {
-  font-size: 2.5rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: bold;
+  font-size: 2rem;
+  color: #4c4c4c;
 }
 
 .heading-2 {
   font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
+  color: #4c4c4c;
 }
 
 .heading-3 {
   font-size: 1rem;
-  font-family: 'Playfair Display', serif;
+  color: #4c4c4c;
+}
+
+a:link {
+  color: #4c4c4c;
+}
+
+a:visited {
+  color: #4c4c4c;
+}
+
+a:hover {
+  color: #000000;
+  text-decoration: none;
 }

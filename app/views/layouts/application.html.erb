@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CheerForum</title>
-    <%= csrf_meta_tags %>
+  <div id="content">
+    <head>
+      <title>CheerForum</title>
+      <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">  
-  </head>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">  
+    </head>
 
-  <body>
-    <%= render 'layouts/nav' %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-    <div class="footer">
-      <p class="footer-text"></p>
-    </div>
-  </body>
+    <body>
+      <%= render 'layouts/nav' %>
+      <div class="gradient">
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </body>
+  </div>
+  <div class="footer">
+    <p class="footer-text"></p>
+  </div>
 </html>

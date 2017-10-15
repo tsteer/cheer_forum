@@ -1,21 +1,28 @@
-.navigation {
-  margin-bottom: 4rem;
-}
-
 .footer {
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 5rem;
-  position: relative;
-  background-color: #efefef;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  
 }
 
 .footer-text {
   text-align: center;
-  padding-top: 2rem;
 }
 
 .body {
   height: 100%;
+}
+.content{
+  height: 100%;
+}
+
+.gradient {
+  padding-top: 1rem;
+
+  background-image:
+    linear-gradient(
+      to bottom right, 
+      #E26A6A, #ffffff
+    );
 }
