@@ -9,7 +9,7 @@ RSpec.describe UserMailer, type: :mailer do
       mail = UserMailer.password_reset(user)
       expect(mail.subject).to eq('Password reset')
       expect(mail.to).to eq(['test@test.com'])
-      expect(mail.from).to eq(['noreply@example.com'])
+      expect(mail.from).to eq(['hello@thecheerpost.com'])
       expect(mail.body.encoded).to match(user.reset_token)
       expect(mail.body.encoded).to match(CGI.escape(user.email))
     end
