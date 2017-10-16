@@ -23,6 +23,15 @@
   background-image:
     linear-gradient(
       to bottom right, 
-      #E26A6A, #ffffff
+      #266dd3, #11f4b4
     );
+}
+
+.form-link {
+  padding-left: 15rem;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
 }

@@ -8,7 +8,7 @@ RSpec.feature 'resetting a users password' do
     it 'displays an error' do
       visit new_password_reset_path
 
-      fill_in 'Email', with: ''
+      fill_in :password_reset_email, with: ''
       click_on 'Submit'
 
       expect(page).to have_content 'Email address not found'
@@ -19,7 +19,7 @@ RSpec.feature 'resetting a users password' do
     it 'sends a reset email' do
       visit new_password_reset_path
 
-      fill_in 'Email', with: 'test91@test.com'
+      fill_in :password_reset_email, with: 'test91@test.com'
       click_on 'Submit'
       expect(page).to have_content 'Reset password email sent'
       expect(ActionMailer::Base.deliveries.size).to eq(1)
