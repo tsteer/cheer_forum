@@ -6,8 +6,8 @@
           <div class="form-group">
             <%= f.text_field :email, placeholder: 'email@email.com', class: 'form-control' %>
             <%= f.password_field :password, placeholder: 'password', class: 'form-control' %>
-            <%= link_to "forgot password", new_password_reset_path %>
             <%= f.submit 'Log In', class: 'btn btn-light btn-lg mt-1' %>
+            <%= link_to "forgot password", new_password_reset_path, class: 'form-link' %>
           </div>
         </div>
       </div>

@@ -23,9 +23,9 @@
           <p class="card-subtitle pt-3 pb-2"><%= @user.date_of_birth %></p>
         </div>
       </div>
-      <div class="card-footer px-3 py-1">
-        <%= link_to 'Edit account', edit_user_path(@user), class: 'card-link'%>
-        <%= link_to 'Delete account', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: 'card-link' %>
+      <div class="card-footer px-3 py-1 footer-container">
+        <div><%= link_to 'Edit account', edit_user_path(@user), class: 'card-link'%></div>
+        <div><%= link_to 'Delete account', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: 'card-link' %></div>
       </div>
     </div>
   </div>

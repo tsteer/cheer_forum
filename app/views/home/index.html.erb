@@ -6,7 +6,7 @@
   </div>
   <% @forum_threads.each do |thread| %>
     <div class="card mb-2">
-      <div class="card-block px-3 py-3">
+      <div class="card-block px-3 py-3 heading-3">
         <%= link_to thread.title, forum_thread_path(thread) %>
       </div>
     </div>

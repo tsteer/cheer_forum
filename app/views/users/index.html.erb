@@ -9,9 +9,9 @@
           <%= user.email %>
         </div>
       </div>
-      <div class="card-footer px-3 py-1">
-        <%= link_to 'Edit user', edit_user_path(user), class: 'card-link' %>
-        <%= link_to 'Delete user', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'card-link'%>
+      <div class="card-footer px-3 py-1 footer-container">
+        <div><%= link_to 'Edit user', edit_user_path(user), class: 'card-link' %></div>
+        <div><%= link_to 'Delete user', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'card-link'%></div>
       </div>
     </div>
   </div>
