@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/about'
+
+  get 'static_pages/terms_of_use'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
