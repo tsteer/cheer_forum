@@ -1,38 +1,40 @@
 .body {
   height: 100%;
-  margin: 0px;
   padding: 0px;
 
 }
 .container {
-    height:100%;
-
+  height:100%;
 }
 
 .flex-container {
   display: flex;
-  padding-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   background-image:
     linear-gradient(
       to bottom right, 
       #266dd3, #11f4b4
     );
-}
+} 
 
-html, body {
+.flex-container, html, body {
   height: 100%;
-  margin: 0;
 }
 
-.wrapper {
+.wrapper, .push {
+  padding-bottom: -6rem;
   min-height: 100%;
-  margin-bottom: -50px;
 }
 
-.footer,
-.push {
+.footer {
+  background-color: red;
+}
+
+.footer{
   height: 6rem;
 }
+
 .form-link {
   padding-left: 15rem;
 }

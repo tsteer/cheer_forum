@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CheerForum</title>
+    <title>The Cheer Post</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,17 +10,16 @@
   </head>
 
   <body>
-  <div class="wrapper">
-    <%= render 'layouts/nav' %>
-    <div class="flex-container">
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-        <%= yield %>
+    <div class="wrapper">
+      <%= render 'layouts/nav' %>
+      <div class="flex-container">
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+          <%= yield %>
+        </div>
       </div>
-    </div>
-    <div class="push"></div>
     </div>
     <footer class="footer"></footer>
   </body>
