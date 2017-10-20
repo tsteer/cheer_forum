@@ -1,25 +1,17 @@
-.footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-  
-}
-
-.footer-text {
-  text-align: center;
-}
-
 .body {
   height: 100%;
+  margin: 0px;
+  padding: 0px;
+
 }
-.content{
-  height: 100%;
+.container {
+    height:100%;
+
 }
 
-.gradient {
+.flex-container {
+  display: flex;
   padding-top: 1rem;
-
   background-image:
     linear-gradient(
       to bottom right, 
@@ -27,6 +19,20 @@
     );
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.footer,
+.push {
+  height: 6rem;
+}
 .form-link {
   padding-left: 15rem;
 }
