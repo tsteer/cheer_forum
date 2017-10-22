@@ -1,26 +1,27 @@
 <div class="card mb-2">
-  <div class="card-block px-3 py-3">
-    <%= link_to 'Start a new thread', new_forum_thread_path, class: 'card-link' %>
-  </div>
+  <h2 class="card-block px-4 py-2">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    <%= link_to 'Start a new thread...', new_forum_thread_path, class: 'card-link' %>
+  </h2>
 </div>
 <% if @forum_categories.empty? %>
   <p>There are no categories</p>
 <% else %>
   <% @forum_categories.each do |f| %>
-    <div class="card mb-3">
-      <div class="card-block px-3 py-2">
-        <%= link_to f.title, forum_category_path(f), class: 'card-title heading-2' %>
-      </div>
+    <div class="card mb-2">
+      <h1 class="card-block px-4 py-2">
+        <%= link_to f.title, forum_category_path(f), class: 'card-title' %>
+      </h1>
     </div>
 
     <% if f.forum_threads.present? %>
-      <div class="card my-3">
-        <div class="card-block px-3 pt-2">
-          <% f.forum_threads.each do |thread| %>
-            <p><%= link_to thread.title, forum_thread_path(thread), class: 'card-link heading-3' %></p>
-          <% end %>
+      <% f.forum_threads.each do |thread| %>
+        <div class="card mb-2">
+          <div class="card-block px-4 pb-2 pt-3">
+            <h3><%= link_to thread.title, forum_thread_path(thread), class: 'card-link' %></h3>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

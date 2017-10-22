@@ -1,16 +1,24 @@
-.heading-1 {
+p {
+  font-weight: lighter;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+}
+
+h2 {
   font-size: 2rem;
-  weight: bold;
+  font-weight: lighter;
   color: #000000;
+  text-align: center;
 }
 
-.heading-2 {
-  font-size: 1.5rem;
-  color: #000000;
-}
-
-.heading-3 {
-  font-size: 1rem;
+h3 {
+  font-size: 1.25rem;
+  font-weight: lighter;
   color: #000000;
 }
 
@@ -25,4 +33,47 @@ a:visited {
 a:hover {
   color:  #266dd3;
   text-decoration: none;
+}
+
+.btn {
+  font-weight: lighter;
+}
+
+.cp-font {
+  font-family: Display;
+}
+
+.text-highlight {
+  font-weight: bold;
+}
+
+.text-lowlight {
+  font-weight: lighter;
+}
+
+.form-control {
+  font-weight: lighter;
+}
+
+.col-form-label {
+  font-weight: lighter;
+  color: #868E96;
+}
+
+li {
+  font-weight: lighter;
+  list-style-type: circle;
+  margin: 0.7rem;
+}
+
+.form-link {
+  font-weight: lighter;
+}
+
+.nav-link {
+  font-weight: lighter;
+}
+
+.dropdown-item {
+  font-weight: lighter;
 }

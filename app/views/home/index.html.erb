@@ -1,29 +1,29 @@
 <% if @forum_threads %>
   <div class="card mb-2">
     <div class="card-block px-3 pt-1">
-      <p class="card-title heading-1">Recent threads</p>
+      <h1 class="card-title">Recent threads</h1>
     </div>
   </div>
   <% @forum_threads.each do |thread| %>
     <div class="card mb-2">
-      <div class="card-block px-3 py-3 heading-3">
+      <h3 class="card-block px-3 pb-2 pt-3">
         <%= link_to thread.title, forum_thread_path(thread) %>
-      </div>
+      </h3>
     </div>
   <% end %>
 <% end %>
 <% if @articles %>
   <div class="card mb-2">
     <div class="card-block px-3 pt-1">
-      <p class="card-title heading-1">Recent articles</p>
+      <h1 class="card-title">Recent articles</h1>
     </div>
   </div>
   <% @articles.each do |article| %>
-    <div class="card mb-3">
+    <div class="card mb-2">
       <div class="card-block px-3 py-2">
-        <%= link_to article.title, article_path(article), class: 'card-title py-2 heading-1' %>
-        <p class="card-subtitle pt-1 pb-2 heading-2"><%= article.subheading %></p>
-        <p class="card-subtitle pt-1 pb-2 heading-3"><%= article.author %></p>
+        <h1><%= link_to article.title, article_path(article), class: 'card-title py-2' %></h1>
+        <h2 class="pt-1 pb-2"><%= article.subheading %></h2>
+        <h3 class="pt-1">Written by <%= article.author %></h3>
       </div>
     </div>
   <% end %>

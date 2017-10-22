@@ -1,15 +1,14 @@
 <%= form_for @forum_post do |f| %>
   <div class="card mb-3">
-    <div class="card-block px-4 py-3">
+    <div class="card-block px-3 py-2">
       <%= f.hidden_field :forum_thread_id, value: @forum_thread.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <div class="form-group row">
-        <div class="form-group row col-3">
-          <%= f.submit button_label, class: 'btn btn-light btn-lg mx-2' %>
-        </div>
-        <div class="col-9">
+        <div class="col-12">
           <%= f.text_area :message, placeholder: 'Enter your reply...', class: 'form-control' %>
         </div>
+        </div>
+          <%= f.submit button_label, class: 'btn btn-light btn-lg mt-1' %>
       </div>
     </div>
   </div>
