@@ -18,6 +18,7 @@ gem 'bcrypt', '~> 3.1'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem 'tinymce-rails', '~> 4.6'
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'launchy'

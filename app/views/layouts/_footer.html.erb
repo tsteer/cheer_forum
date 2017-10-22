@@ -1,13 +1,8 @@
-<footer class="footer">
-  <small>
-    The <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   '#' %></li>
-      <li><%= link_to "Contact", '#' %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
-    </ul>
-  </nav>
+<footer>
+  <p class="site-footer-container col-12 pt-4">Want to write for The Cheer Post? Drop us an email at hello@thecheerpost.com</p>
+  <div class="site-footer-container pb-4 pt-4">
+    <%= link_to 'About', static_pages_about_path, class:"col-2" %>
+    <%= link_to 'Terms of Use', static_pages_terms_of_use_path, class:" col-2" %>
+    <%= link_to 'Sign Up', new_user_path, class:" col-2" %>
+  </div>
 </footer>

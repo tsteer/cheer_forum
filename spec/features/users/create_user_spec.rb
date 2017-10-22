@@ -22,7 +22,7 @@ RSpec.feature 'User signup' do
       fill_in 'Username', with: 'Emily Brown'
       fill_in 'Email', with: 'emilybrown@test.com'
       fill_in 'Password', with: 'password123'
-      fill_in 'Password confirmation', with: 'password123'
+      fill_in 'Password Confirmation', with: 'password123'
       within '#user_date_of_birth_1i' do
         find('option[value="1990"]').select_option
       end

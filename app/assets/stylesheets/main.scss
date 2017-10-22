@@ -1,8 +1,8 @@
 .body {
   height: 100%;
   padding: 0px;
-
 }
+
 .container {
   height:100%;
 }
@@ -20,26 +20,31 @@
 
 .flex-container, html, body {
   height: 100%;
+  padding-bottom: auto;
 }
 
-.wrapper, .push {
-  padding-bottom: -6rem;
+.wrapper{
+  margin-bottom: -6rem;
   min-height: 100%;
-}
-
-.footer {
-  background-color: red;
-}
-
-.footer{
-  height: 6rem;
 }
 
 .form-link {
   padding-left: 15rem;
 }
 
-.footer-container {
+.horizontal-space {
   display: flex;
   justify-content: space-between;
+  font-weight: lighter;
+}
+
+.site-footer-container {
+  text-align: center;
+  justify-content: center;
+  font-weight: lighter;
+  display: flex;
+}
+
+.form-align {
+  text-align: right;
 }
