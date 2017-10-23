@@ -3,27 +3,24 @@
   <head>
     <title>The Cheer Post</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet"> 
   </head>
 
   <body>
-  <div class="wrapper">
-    <%= render 'layouts/nav' %>
-    <div class="flex-container">
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-        <%= yield %>
+    <div class="wrapper">
+      <%= render 'layouts/nav' %>
+      <div class="flex-container">
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+          <%= yield %>
+        </div>
       </div>
-    </div>
-
-    <%= render 'layouts/footer' %>
-    
-
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
