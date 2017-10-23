@@ -1,4 +1,10 @@
 <div class="card mb-2">
+  <h1 class="card-block px-4 py-2">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+    <%= link_to 'Start a new thread...', new_forum_thread_path, class: 'card-link' %>
+  </h1>
+</div>
+<div class="card mb-2">
   <div class="card-block px-4 py-2">
     <h1 class="card-title"><%= @forum_category.title %></h1>
   </div>
@@ -9,12 +15,6 @@
       <%= link_to 'Delete category', forum_category_path(@forum_category), method: :delete, data: { confirm: 'Are you sure you want to delete this category?' }, class: 'card-link' %>
     </div>
   <% end %>
-</div>
-<div class="card mb-2">
-  <h2 class="card-block px-4 py-2">
-    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-    <%= link_to 'Start a new thread...', new_forum_thread_path, class: 'card-link' %>
-  </h2>
 </div>
 <% @forum_category.forum_threads.each do |thread| %>
   <div class="card mb-2">
