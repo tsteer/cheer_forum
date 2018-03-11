@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def check_user_age
-    if self.date_of_birth > 14.years.ago
-      errors.add(:base, "Users must be 14 or older")
+    if self.date_of_birth > 18.years.ago
+      errors.add(:base, "Users must be 18 or older")
     end
   end
 
